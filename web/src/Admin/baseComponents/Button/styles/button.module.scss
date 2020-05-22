@@ -1,8 +1,8 @@
-@import "../../../styles/colors.module";
-@import "../../../mixins/_bg-color.module";
-@import "../../../mixins/_transition.module";
-@import "../../../mixins/_hover_focus.module";
-@import "../../../mixins/_border.module";
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_bg-color.module";
+@import "../../../styles/mixins/_transition.module";
+@import "../../../styles/mixins/_hover_focus.module";
+@import "../../../styles/mixins/_border.module";
 
 .button {
 	padding: 12px 16px;
