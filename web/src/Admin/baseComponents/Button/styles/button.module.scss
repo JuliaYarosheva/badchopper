@@ -1,7 +1,7 @@
 @import "../../../styles/colors/colors.module";
 @import "../../../styles/mixins/_bg-color.module";
 @import "../../../styles/mixins/_transition.module";
-@import "../../../styles/mixins/_hover_focus.module";
+@import "../../../styles/mixins/_hover.module";
 @import "../../../styles/mixins/_border.module";
 
 .button {
@@ -26,7 +26,7 @@
 	color: $primary;
 	@include border ($primary);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($primary);
 	};
@@ -36,7 +36,7 @@
 	color: $dark;
 	@include bg-color($secondary);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
 		@include bg-color(darken($secondary, 10%));
 	};
@@ -46,7 +46,7 @@
 	color: $dark;
 	@include border ($secondary);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
 		@include bg-color($secondary);
 	};
@@ -60,7 +60,7 @@
 	color: $success;
 	@include border ($success);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($success);
 	};
@@ -74,7 +74,7 @@
 	color: $danger;
 	@include border ($danger);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($danger);
 	};
@@ -89,7 +89,7 @@
 	color: $warning;
 	@include border ($warning);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
 		@include bg-color($warning);
 	};
@@ -103,7 +103,7 @@
 	color: $info;
 	@include border ($info);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($info);
 	};
@@ -118,7 +118,7 @@
 	color: $dark;
 	@include border ($light);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
 		@include bg-color($light);
 	};
@@ -132,7 +132,7 @@
 	color: $gray;
 	@include border ($gray);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($gray);
 	};
@@ -146,7 +146,7 @@
 	color: $dark;
 	@include border ($dark);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($dark);
 	};

@@ -11,7 +11,7 @@ import chevronDown from "@iconify/icons-mdi/chevron-down";
 import chevronUp from "@iconify/icons-mdi/chevron-up";
 
 import classes from './styles/index.module.scss';
-import { COLORS } from '../../styles/baseColors';
+import { COLORS } from '../../styles/colors/baseColors';
 import { isNullOrUndefined } from '../../../utils';
 
 const Dropdown = (

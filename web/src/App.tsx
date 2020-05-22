@@ -15,7 +15,7 @@ function App() {
   return (
       <Router>
           <Switch>
-              <Route exact path={ROUTES.ADMIN_PANEL}>
+              <Route path={ROUTES.ADMIN_PANEL}>
                   <AdminApp />
               </Route>
               <Route path={ROUTES.CLIENT}>

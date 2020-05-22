@@ -1,6 +1,6 @@
 @import "../../../styles/colors/colors.module";
 @import "../../../styles/mixins/_transition.module";
-@import "../../../styles/mixins/_hover_focus.module";
+@import "../../../styles/mixins/_hover.module";
 @import "../../../styles/mixins/_bg-color.module";
 
 .tooltipActionListItem {
@@ -8,7 +8,7 @@
 	border-bottom: 1px solid $secondary;
 	cursor: pointer;
 
-	@include hover_focus {
+	@include hover {
 		@include bg-color(lighten($gray, 40%));
 	};
 
@@ -31,7 +31,7 @@
 	cursor: not-allowed;
 	color: $disabled;
 
-	@include hover_focus {
+	@include hover {
 		background-color: inherit !important;
 	};
 }

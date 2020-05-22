@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { AdminNavigation } from '../AdminNavigation/AdminNavigation';
+import {Navigation} from '../Navigation/Navigation';
+import {Content} from '../Content/Content';
 
 const AdminApp = () => {
     return (
-        <>
-            <AdminNavigation />
-        </>
+        <div style={{ display: 'flex' }}>
+            <Navigation />
+            <Content />
+        </div>
     );
 };
 

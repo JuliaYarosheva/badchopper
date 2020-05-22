@@ -1,14 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
+import {TypographyType} from './types';
 
-const Typography = (
+const Typography: FC<TypographyType> = (
 	{
 		bold,
 		variant,
 		children,
+        className,
 		displayBlock
 	}
 ) => {
@@ -28,7 +29,8 @@ const Typography = (
 			[classes.typography_bold700]: bold === '700',
 			[classes.typography_bold800]: bold === '800',
 			[classes.typography_displayBlock]: displayBlock
-		}
+		},
+        className
 	);
 
 	return (
@@ -40,17 +42,6 @@ Typography.defaultProps = {
 	bold: '400',
 	variant: '16',
 	displayBlock: false,
-
-};
-
-Typography.propTypes = {
-	bold: PropTypes.string,
-	variant: PropTypes.string,
-	children: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.object
-	]),
-	displayBlock: PropTypes.bool
 };
 
 export { Typography };
