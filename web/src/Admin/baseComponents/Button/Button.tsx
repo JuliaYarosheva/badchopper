@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { Icon } from "@iconify/react";
 import { LoadSpinner } from '../LoadSpinner/LoadSpinner';
 
 import classNames from 'classnames';
 import classes from './styles/index.module.scss';
+import {ButtonType} from './types';
 
-const Button = (
+const Button: FC<ButtonType> = (
 	{
 		size,
 		type,
@@ -21,8 +21,6 @@ const Button = (
 		actionHandler,
 	}
 ) => {
-	const [hover, setHover] = useState(false);
-
 	const componentClassName = classNames(
 		classes.button,
 		{
@@ -65,15 +63,19 @@ const Button = (
 		}
 	);
 
+	const action =(event) => {
+	    if (!!actionHandler) {
+            actionHandler(event, actionName)
+        }
+    };
+
 	return (
 		<>
 			{
 				!isPending && (
 					<div
 						className={componentClassName}
-						onMouseEnter={() => setHover(true)}
-						onMouseLeave={() => setHover(false)}
-						onClick={e => actionHandler(e, actionName)}
+						onClick={e => action(e)}
 					>
 						{
 							icon && (
@@ -106,28 +108,14 @@ const Button = (
 };
 
 Button.defaultProps = {
-	icon: '',
 	className: '',
 	size: 'normal',
 	type: 'secondary',
 	isPending: false,
 	noBorder: false,
-	actionName: null,
+	actionName: '',
 	transparent: false,
 	actionHandler: () => {}
-};
-
-Button.propTypes = {
-	size: PropTypes.string,
-	icon: PropTypes.object,
-	type: PropTypes.string,
-	label: PropTypes.string,
-	className: PropTypes.string,
-	actionName: PropTypes.string,
-	transparent: PropTypes.bool,
-	noBorder: PropTypes.bool,
-	isPending: PropTypes.bool,
-	actionHandler: PropTypes.func
 };
 
 export { Button };

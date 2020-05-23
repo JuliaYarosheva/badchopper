@@ -1,7 +1,7 @@
 import React, {Component, createRef, ReactNode} from 'react';
 import { createPortal } from 'react-dom';
 
-import { AdminAppContext } from '../../AdminComponents/AdminApp/store/AdminAppContext';
+import { AdminAppContext } from '../../AdminComponents/AdminApp/store/consts';
 import classes from './styles/index.module.scss';
 import { OVERLAY_PORTAL } from './consts';
 import { getGeneralPosition, getDropdownPosition } from './utils';

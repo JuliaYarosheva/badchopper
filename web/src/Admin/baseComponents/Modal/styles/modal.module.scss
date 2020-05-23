@@ -54,3 +54,12 @@
 .modal_large {
 	width: 550px;
 }
+
+.backGround {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	transition: background-color 250ms;
+}

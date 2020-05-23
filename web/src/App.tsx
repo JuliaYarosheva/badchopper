@@ -5,7 +5,7 @@ import {
     Route
 } from "react-router-dom";
 
-import { AdminApp } from './Admin/adminComponents/AdminApp/AdminApp';
+import AdminApp from './Admin/adminComponents/AdminApp/AdminApp';
 import { ClientApp } from './Client/ClientComponents/ClientApp';
 import { ROUTES } from './contst';
 

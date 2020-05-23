@@ -14,6 +14,7 @@
 	height: 40px;
 	text-align: center;
 	line-height: .9;
+	width: fit-content;
 
 	@include transition(background-color .3s, box-shadow .3s, color .3s);
 }

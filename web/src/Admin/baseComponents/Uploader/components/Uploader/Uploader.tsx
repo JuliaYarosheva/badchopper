@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { UploaderContext } from './store/consts';
-import { AdminAppContext } from '../../../../AdminComponents/AdminApp/store/AdminAppContext';
+import {UploaderContext} from './store/consts';
+import { AdminAppContext }  from '../../../../AdminComponents/AdminApp/store/consts';
 
 import { isUndefined } from '../../../../../utils';
 
@@ -19,7 +19,9 @@ const Uploader = (
 	}
 ) => {
 	const {
+        //@ts-ignore
 		addUploaderToGlobalContext,
+        //@ts-ignore
 		removeUploaderFromGlobalContext
         //@ts-ignore
 	} = useContext(AdminAppContext);

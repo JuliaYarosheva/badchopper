@@ -7,10 +7,12 @@ import {
 import {ROUTES} from '../../contst';
 import {Assistance} from '../Assistance/Assistance';
 import {Feedbacks} from '../Feedbacks/Feedbacks';
+import {Departments} from '../Departments/Departments';
+import classes from './styles/index.module.scss'
 
 const Content = () => {
     return (
-        <div style={{ marginLeft: 230 }}>
+        <div className={classes.content}>
 			<Switch>
 				<Route path={ROUTES.ASSISTANCE}>
 					<Assistance/>
@@ -18,6 +20,9 @@ const Content = () => {
 				<Route path={ROUTES.FEEDBACKS}>
 					<Feedbacks/>
 				</Route>
+                <Route path={ROUTES.DEPARTMENTS}>
+                    <Departments/>
+                </Route>
 			</Switch>
         </div>
     );
