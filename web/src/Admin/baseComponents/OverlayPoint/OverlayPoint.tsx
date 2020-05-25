@@ -18,7 +18,7 @@ type OverlayPointProps = {
     onClose: () => void;
     position?: string;
     componentRef: any;
-    overlayBehavior: string;
+    overlayBehavior?: string;
 }
 
 //@ts-ignore
