@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {
     AdminAppContext
 } from './consts';
-import {AdminAppContextType} from '../types';
+import {AdminAppContextType} from './types';
 
 export const AdminAppContextProvider = ({children}) => {
     const [showOverlayCloak, setShowOverlayCloak] = useState(false);

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {UploaderContext} from './store/consts';
-import { AdminAppContext }  from '../../../../AdminComponents/AdminApp/store/consts';
+import { AdminAppContext }  from '../../../../adminComponents/AdminApp/store/AdminAppContext/consts';
 
 import { isUndefined } from '../../../../../utils';
 

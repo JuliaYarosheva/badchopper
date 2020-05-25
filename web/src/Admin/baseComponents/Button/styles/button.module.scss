@@ -35,21 +35,21 @@
 
 .button_secondary {
 	color: $dark;
-	@include bg-color($secondary);
+	@include bg-color($secondary_button);
 
 	@include hover {
 		color: $dark;
-		@include bg-color(darken($secondary, 10%));
+		@include bg-color(darken($secondary_button, 10%));
 	};
 }
 
 .button_secondary__transparent {
 	color: $dark;
-	@include border ($secondary);
+	@include border ($secondary_button);
 
 	@include hover {
 		color: $dark;
-		@include bg-color($secondary);
+		@include bg-color($secondary_button);
 	};
 }
 

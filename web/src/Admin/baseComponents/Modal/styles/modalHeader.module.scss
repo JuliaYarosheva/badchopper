@@ -3,8 +3,8 @@
 
 .modalHeader {
 	padding: 16px;
-	background-color: $layout_section_bg;
-	border-bottom: 1px solid $secondary;
+	background-color: $contentBackGround;
+	border-bottom: 1px solid $contentHeaderBorder;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

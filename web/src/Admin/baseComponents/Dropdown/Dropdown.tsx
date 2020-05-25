@@ -55,6 +55,7 @@ const Dropdown = (
 		setDisplayValue(selectedItem.name);
 
 		onFieldChange(id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
 	const handleItemClick = useCallback((id) => {
@@ -69,6 +70,7 @@ const Dropdown = (
 		if (isNullOrUndefined(value)) {
 			setDisplayValue(placeholder);
 		}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 
 	const getDropdownItems = useMemo(() => {
@@ -89,6 +91,7 @@ const Dropdown = (
 				/>
 			);
 		});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
 	const dropdownItems = useMemo(() => {

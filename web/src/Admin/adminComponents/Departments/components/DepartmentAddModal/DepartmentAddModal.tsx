@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 
 import Modal from '../../../../baseComponents/Modal';
 import {ModalComponentType} from '../../../../baseComponents/Modal/types';
-
-//import ManufacturesDetailModalContent from './ManufacturesDetailModalContent';
+import {DepartmentAddModalContent} from './DepartmentAddModalContent';
 
 const DepartmentAddModal: FC<ModalComponentType> = (
 	{
@@ -19,7 +18,9 @@ const DepartmentAddModal: FC<ModalComponentType> = (
 			handleClose={handleClose}
 			render={renderData => {
 				return (
-					<div>conten</div>
+					<DepartmentAddModalContent
+                        {...renderData}
+                    />
 				);
 			}}
 		/>

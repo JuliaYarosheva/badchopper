@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import className from 'classnames';
 import classes from './styles/index.module.scss';
-import { AdminAppContext } from '../../adminComponents/AdminApp/store/consts';
+import { AdminAppContext } from '../../adminComponents/AdminApp/store/AdminAppContext/consts';
 
 const Modal = (
 	{

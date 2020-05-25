@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import NotificationCard from './NotificationCard';
 import classes from './styles/index.module.scss';
-import { AdminAppContext } from'../../adminComponents/AdminApp/store/consts';
+import { AdminAppContext } from'../../adminComponents/AdminApp/store/AdminAppContext/consts';
 
 const NotificationContentWrapper = () => {
     //@ts-ignore
