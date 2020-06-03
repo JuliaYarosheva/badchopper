@@ -12,6 +12,10 @@
 	height: 80px;
 	resize: none;
 	outline: none !important;
+
+	::placeholder {
+		font-style: italic;
+	}
 }
 
 input.textarea:focus {

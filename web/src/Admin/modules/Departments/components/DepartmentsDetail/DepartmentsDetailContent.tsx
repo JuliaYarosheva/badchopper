@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import {getDepartmentDetail} from '../../api';
+import React from 'react';
+import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLayout';
 
-const DepartmentsDetailContent = () => {
-    const [departmentData, setDepartmentData] = useState({});
-    useEffect(() => {
-        getDepartmentDetail('id')
-            .then(({ data }) => setDepartmentData(data))
-    }, []);
-
-    console.log(departmentData);
-
+const DepartmentsDetailContent = (
+    {
+        departmentData
+    }
+) => {
     return (
-        <div>###NEW COMPONENT</div>
+        <ContentLayout>
+            {departmentData.name}
+        </ContentLayout>
     );
 };
 

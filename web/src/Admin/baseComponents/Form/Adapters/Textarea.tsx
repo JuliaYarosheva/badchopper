@@ -41,7 +41,6 @@ class Textarea extends Component<TextareaType, {}> {
 				toolTipMessage={toolTipMessage}
 				hasFocus={hasFocus}
 			>
-                //@ts-ignore
 				<TextareaComponent
 					{...this.props}
 				/>

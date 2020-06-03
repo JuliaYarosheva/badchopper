@@ -17,6 +17,7 @@ import {
 } from "../../types/general";
 
 const addDepartmentService = (departmentDTO: departmentDTOType, client) => {
+    console.log(departmentDTO);
     if (departmentDTO.name.length !== 0) {
         return addDepartmentModel(departmentDTO, client)
     }

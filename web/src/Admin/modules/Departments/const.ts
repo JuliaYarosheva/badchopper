@@ -1,3 +1,5 @@
 export const ROUTE = {
-    GET_DEPARTMENT_DETAIL: '/departments/getDepartment/'
+    ADD_DEPARTMENT: '/departments/addDepartment',
+    GET_ALL_DEPARTMENTS: '/departments/getAllDepartments',
+    GET_DEPARTMENT_DETAIL: '/departments/getDepartment'
 };

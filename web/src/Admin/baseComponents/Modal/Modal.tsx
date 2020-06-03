@@ -11,6 +11,7 @@ const Modal = (
 		size,
 		render,
 		isOpen,
+        extraHeight,
 		handleClose
 	}
 ) => {
@@ -32,7 +33,8 @@ const Modal = (
         {
             [classes.modal_small]: size === 'small',
             [classes.modal_medium]: size === 'medium',
-            [classes.modal_large]: size === 'large'
+            [classes.modal_large]: size === 'large',
+            [classes.modal_extraHeight]: extraHeight
         }
     );
 
@@ -60,11 +62,13 @@ const Modal = (
 
 Modal.defaultProps = {
 	isOpen: false,
+    extraHeight: false,
 	size: 'medium',
 };
 
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
+    extraHeight: PropTypes.bool,
 	render: PropTypes.func,
 	size: PropTypes.string,
 	handleClose: PropTypes.func,

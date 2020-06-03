@@ -12,12 +12,14 @@ const ModalContent = (
 		children,
 		isPending,
 		className,
-		autoHeight
+		autoHeight,
+        extraHeight
 	}
 ) => {
 	const componentClassName = ClassNames(
 		{
-			[classes.modalContent_autoHeight]: autoHeight
+			[classes.modalContent_autoHeight]: autoHeight,
+			[classes.modalContent_extraHeight]: extraHeight
 		},
 		classes.modalContent,
 		className

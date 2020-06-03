@@ -3,6 +3,20 @@
 .navigationListCollapseSection {
 	background-color: $navHoverBackGround;
 	padding: 8px 0;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 4px;
+	margin-top: -4px;
+
+	::before {
+		content: '';
+		position: absolute;
+		width: 3px;
+		height: 100vh;
+		background-color: $primary;
+		left: 0;
+		top: -8px;
+	}
 }
 
 .navigationListCollapseSection__item {

@@ -14,6 +14,7 @@ const DepartmentAddModal: FC<ModalComponentType> = (
 	return (
 		<Modal
 			size="large"
+            extraHeight
 			isOpen={isOpen}
 			handleClose={handleClose}
 			render={renderData => {

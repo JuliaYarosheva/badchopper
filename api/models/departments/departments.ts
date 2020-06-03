@@ -74,8 +74,7 @@ const getDepartmentModel = (getDepartmentDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
-            .find({_id: new ObjectID(getDepartmentDTO.id)})
-            .toArray()
+            .findOne({_id: new ObjectID(getDepartmentDTO.id)}, {})
             .then(res => resolve(res))
             .catch(err => reject(err));
     });

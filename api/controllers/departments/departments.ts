@@ -18,12 +18,12 @@ export default (app: Application, client) => {
             .then(status => {
                 return res
                     .status(200)
-                    .send("images uploaded");
+                    .send("department added");
             })
             .catch(() => {
                 return res
                     .status(500)
-                    .send("images not uploaded");
+                    .send("department not added");
             });
     });
 

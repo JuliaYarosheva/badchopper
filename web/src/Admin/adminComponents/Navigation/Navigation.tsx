@@ -1,16 +1,16 @@
 import React, { useEffect, useContext } from 'react';
-import NavigationContextProvider, {NavigationContext} from './store';
+import {NavigationContext} from './store';
 import {NavigationUserInfo} from './components/NavigationUserInfo/NavigationUserInfo';
 import {NavigationList} from './components/NavigationList/NavigationList';
 
 import classes from './styles/index.module.scss'
-import {initNavigationList} from './api';
+import {getNavigationList} from './api';
 
 const Navigation = () => {
     const {navigationList, setNavigationList} = useContext(NavigationContext);
 
     useEffect(() => {
-        initNavigationList()
+        getNavigationList()
             .then(({ data }) => setNavigationList(data))
         // eslint-disable-next-line
     }, []);
@@ -25,12 +25,4 @@ const Navigation = () => {
     );
 };
 
-const NavigationWithContext = () => {
-    return (
-        <NavigationContextProvider>
-            <Navigation />
-        </NavigationContextProvider>
-    );
-};
-
-export { NavigationWithContext };
+export { Navigation };
