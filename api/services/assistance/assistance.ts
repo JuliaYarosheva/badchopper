@@ -11,7 +11,8 @@ import {
 
 import {
     documentIdType,
-    deleteDocumentResponseStatusType, updateDocumentResponseStatusType
+    deleteDocumentResponseStatusType,
+    updateDocumentResponseStatusType
 } from "../../types/general";
 
 import { normalizeAssistanceData } from "../../utils/assistance/normalizeAssistanceData"

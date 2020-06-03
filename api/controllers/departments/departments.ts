@@ -1,5 +1,4 @@
 import {Router, Request, Response, Application} from 'express';
-
 import {
     addDepartmentService,
     getDepartmentService,
@@ -13,6 +12,7 @@ import { requestDocumetnParamsType } from "../../types/general";
 const departmentsRouter = Router();
 
 export default (app: Application, client) => {
+
     departmentsRouter.post(CONSTS.ADD_DEPARTMENT, (req: Request, res: Response) => {
         addDepartmentService(req.body, client)
             .then(status => {

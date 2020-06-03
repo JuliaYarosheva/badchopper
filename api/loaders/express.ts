@@ -4,6 +4,8 @@ import { Request, Response } from 'express';
 import corsConfig from '../config/cors';
 import departmentsController from '../controllers/departments/departments';
 import mediaController from '../controllers/media/media';
+import assistanceController from '../controllers/assistance/assistance';
+import navigationListController from '../controllers/navigation/navigationList';
 
 export const expressClient = (app, client) => {
     app.use(cors(corsConfig));
@@ -11,6 +13,8 @@ export const expressClient = (app, client) => {
 
     departmentsController(app, client);
     mediaController(app, client);
+    assistanceController(app, client);
+    navigationListController(app, client);
 
     /// catch 404 and forward to error handler
     app.use((req: Request, res: Response, next) => {

@@ -1,21 +1,21 @@
-import React from 'react';
-
-//to delete
-import data from '../../testData';
-//to delete
+import React, { FC } from 'react';
 
 import {NavigationListItem} from './NavigationListItem';
 import {NavigationListItemCollapse} from './NavigationListItemCollapse';
 
-import { NavigationItemType } from './types';
+import { NavigationItemType, NavigationListProps } from './types';
 import classes from './styles/index.module.scss';
 import {getUniqueKey} from '../../../../../utils';
 
-const NavigationList = () => {
+const NavigationList: FC<NavigationListProps> = (
+    {
+        navigationList
+    }
+) => {
     return (
         <div className={classes.adminNavigationList}>
             {
-                data.navigation.map((item: NavigationItemType) => {
+                navigationList.map((item: NavigationItemType) => {
                     const key = getUniqueKey(item.label);
 
                     return item.items.length === 0

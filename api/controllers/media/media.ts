@@ -4,7 +4,7 @@ import {
     uploadImageService,
     deleteImageService
 } from "../../services/media/media";
-import CONSTS from './consts'
+import CONSTS from './const'
 
 const mediaRouter = Router();
 

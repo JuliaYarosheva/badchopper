@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import {Navigation} from '../Navigation/Navigation';
+import {NavigationWithContext as Navigation} from '../Navigation/Navigation';
 import {Content} from '../Content/Content';
 import {OverlayCloak} from '../../baseComponents/OverlayCloak/OverlayCloak';
 import {AdminAppContext} from './store/AdminAppContext/consts';
