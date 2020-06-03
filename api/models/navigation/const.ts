@@ -2,7 +2,7 @@ export default [
     {
         label: 'Филиалы',
         icon: 'department',
-        route: '/adminPanel/departments/',
+        route: '/adminPanel/departments/list',
         items: [],
         hasRoute: true
     },

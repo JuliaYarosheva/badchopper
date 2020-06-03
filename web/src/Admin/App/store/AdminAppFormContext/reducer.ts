@@ -1,4 +1,4 @@
-import { actionLogger, removeObjectProperty } from '../../../../../utils';
+import { actionLogger, removeObjectProperty } from '../../../../utils';
 
 import {
 	ADD_FORM_TO_GLOBAL_CONTEXT,

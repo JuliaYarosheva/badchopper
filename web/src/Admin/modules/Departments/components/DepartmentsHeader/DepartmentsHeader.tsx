@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-import {ContentHeaderLeft, ContentHeaderRight} from '../../../ContentHeader';
+import ContentHeader, {ContentHeaderLeft, ContentHeaderRight} from '../../../../adminComponents/ContentHeader';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
-import ContentHeader from '../../../ContentHeader';
 import {Button} from '../../../../baseComponents/Button/Button';
 import classes from './styles/index.module.scss';
 import {DepartmentsModalsContext, MODALS} from '../../consts';
-
 
 const DepartmentsHeader = () => {
 

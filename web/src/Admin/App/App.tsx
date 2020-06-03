@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 
-import {NavigationWithContext as Navigation} from '../Navigation/Navigation';
-import {Content} from '../Content/Content';
-import {OverlayCloak} from '../../baseComponents/OverlayCloak/OverlayCloak';
+import {NavigationWithContext as Navigation} from '../modules/Navigation/Navigation';
+import {Content} from '../adminComponents/Content/Content';
+import {OverlayCloak} from '../baseComponents/OverlayCloak/OverlayCloak';
 import {AdminAppContext} from './store/AdminAppContext/consts';
 import {AdminAppContextProvider} from './store/AdminAppContext/AdminAppContext';
 import {AdminAppFormContextProvider} from './store/AdminAppFormContext/AdminAppFormContext';
 
-const AdminApp = () => {
+const App = () => {
     const { showOverlayCloak, handleOverlayClose } = useContext(AdminAppContext);
 
     return (
@@ -25,7 +25,7 @@ const AdminApp = () => {
 const AdminAppWithContexts = () => (
     <AdminAppContextProvider>
         <AdminAppFormContextProvider>
-            <AdminApp />
+            <App />
         </AdminAppFormContextProvider>
     </AdminAppContextProvider>
 );

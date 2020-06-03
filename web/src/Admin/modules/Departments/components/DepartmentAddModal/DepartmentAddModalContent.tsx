@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
 import {Button} from '../../../../baseComponents/Button/Button';
-import {AdminAppFormContext} from '../../../AdminApp/store/AdminAppFormContext/consts';
+import {AdminAppFormContext} from '../../../../App/store/AdminAppFormContext/consts';
 import {DepartmentAddModalForm} from './DepartmentAddModalForm';
 
 const DepartmentAddModalContent = (

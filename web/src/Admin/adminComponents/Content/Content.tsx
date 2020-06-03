@@ -5,9 +5,9 @@ import {
 } from "react-router-dom";
 
 import {ROUTES} from '../../contst';
-import {Assistance} from '../Assistance/Assistance';
-import {Feedbacks} from '../Feedbacks/Feedbacks';
-import {Departments} from '../Departments/Departments';
+import {Assistance} from '../../modules/Assistance/Assistance';
+import {Feedbacks} from '../../modules/Feedbacks/Feedbacks';
+import {Departments} from '../../modules/Departments/Departments';
 import classes from './styles/index.module.scss'
 
 const Content = () => {

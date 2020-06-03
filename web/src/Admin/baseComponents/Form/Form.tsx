@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef, memo, useCallback } from 'react';
 
 import { ContextForm } from './store/FormContext';
-import { AdminAppFormContext } from '../../adminComponents/AdminApp/store/AdminAppFormContext/consts';
+import { AdminAppFormContext } from '../../App/store/AdminAppFormContext/consts';
 
 import { isNull, actionLoggerWarning, actionLogger } from '../../../utils';
 

@@ -45,6 +45,7 @@ const updateDepartmentService = (updateDepartmentDTO, client) => {
 };
 
 const getDepartmentService = (getDepartmentDTO: documentIdType, client) => {
+    console.log(getDepartmentDTO);
     if (getDepartmentDTO.id.length !== 0) {
         return getDepartmentModel(getDepartmentDTO, client)
             .then((status: getDocumentResponseStatusType) => {
