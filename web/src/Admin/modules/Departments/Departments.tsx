@@ -5,17 +5,20 @@ import {DepartmentsModalsProvider} from './components/DepartmentsModalsProvider/
 import {DepartmentsDetail} from './components/DepartmentsDetail/DepartmentsDetail';
 import {DepartmentsList} from './components/DepartmentsList/DepartmentsList';
 import {ROUTES} from '../../contst';
+import {DepartmentsContextProvider} from './store/DepartmentsContext';
 
 const Departments = () => {
     return (
-        <DepartmentsModalsProvider>
-            <Route path={ROUTES.DEPARTMENTS_LIST}>
-                <DepartmentsList/>
-            </Route>
-            <Route path={ROUTES.DEPARTMENTS_DETAIL}>
-                <DepartmentsDetail/>
-            </Route>
-        </DepartmentsModalsProvider>
+        <DepartmentsContextProvider>
+            <DepartmentsModalsProvider>
+                <Route path={ROUTES.DEPARTMENTS_LIST}>
+                    <DepartmentsList/>
+                </Route>
+                <Route path={ROUTES.DEPARTMENTS_DETAIL}>
+                    <DepartmentsDetail/>
+                </Route>
+            </DepartmentsModalsProvider>
+        </DepartmentsContextProvider>
     );
 };
 

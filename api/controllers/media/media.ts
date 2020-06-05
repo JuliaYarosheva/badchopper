@@ -2,7 +2,8 @@ const fileUpload = require('express-fileupload');
 import { Router, Response, Application, Request } from 'express';
 import {
     uploadImageService,
-    deleteImageService
+    deleteImageService,
+    getAllImagesService
 } from "../../services/media/media";
 import CONSTS from './const'
 
@@ -22,6 +23,20 @@ export default (app: Application, client) => {
                 return res
                     .status(500)
                     .send("files not saved");
+            });
+    });
+
+    mediaRouter.get(CONSTS.GET_ALL_IMAGES, (req: Request, res: Response) => {
+        getAllImagesService(client)
+            .then((status) => {
+                return res
+                    .status(200)
+                    .send(status);
+            })
+            .catch((error) => {
+                return res
+                    .status(500)
+                    .send(error.message);
             });
     });
 

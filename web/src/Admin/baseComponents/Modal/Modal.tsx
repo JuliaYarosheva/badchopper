@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 import className from 'classnames';
 import classes from './styles/index.module.scss';
-import { AdminAppContext } from '../../App/store/AdminAppContext/consts';
+//import { AdminAppContext } from '../../App/store/AdminAppContext/const';
 
 const Modal = (
 	{
@@ -15,18 +15,18 @@ const Modal = (
 		handleClose
 	}
 ) => {
-    const { handleShowOverlayCloak, setHandleOverlayClose } = useContext(AdminAppContext);
-
-    useEffect(() => {
-        if (isOpen) {
-            setHandleOverlayClose(() => handleClose);
-        } else {
-            setHandleOverlayClose(() => {});
-        }
-
-        handleShowOverlayCloak(isOpen);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isOpen]);
+    // const { handleShowOverlayCloak, setHandleOverlayClose } = useContext(AdminAppContext);
+    //
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         setHandleOverlayClose(() => handleClose);
+    //     } else {
+    //         setHandleOverlayClose(() => {});
+    //     }
+    //
+    //     handleShowOverlayCloak(isOpen);
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [isOpen]);
 
 	const componentClassName = className(
         classes.modal,
@@ -43,7 +43,7 @@ const Modal = (
 			<CSSTransition
 				in={isOpen}
 				unmountOnExit
-				timeout={500}
+				timeout={300}
 				classNames={{
                     enter: classes['modal-enter'],
                     enterActive: classes['modal-enter-active'],
@@ -51,10 +51,18 @@ const Modal = (
                     exitActive: classes['modal-exit-active']
                 }}
 			>
-                <div className={componentClassName}>
-                    { render({ handleClose }) }
-                </div>
+                <>
+                    <div className={componentClassName}>
+                        { render({ handleClose, extraHeight }) }
+                    </div>
+
+                </>
 			</CSSTransition>
+            {
+                isOpen && (
+                    <div className={classes.backGround}></div>
+                )
+            }
         </>
 
 	);

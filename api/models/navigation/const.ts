@@ -41,7 +41,13 @@ export default [
         icon: 'feedbacks',
         hasRoute: true,
         items: []
+    },
+    {
+        label: 'Медиа',
+        route: '/adminPanel/media',
+        icon: 'fileImageOutline',
+        hasRoute: true,
+        items: []
     }
-
 ]
 

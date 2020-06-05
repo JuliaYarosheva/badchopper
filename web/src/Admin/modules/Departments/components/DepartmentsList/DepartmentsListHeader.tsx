@@ -3,7 +3,7 @@ import ContentHeader, {ContentHeaderLeft, ContentHeaderRight} from '../../../../
 import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {Button} from '../../../../baseComponents/Button/Button';
 import classes from './styles/index.module.scss';
-import {DepartmentsModalsContext, MODALS} from '../../consts';
+import {DepartmentsModalsContext, MODALS} from '../DepartmentsModalsProvider/const';
 
 const DepartmentsListHeader = () => {
 

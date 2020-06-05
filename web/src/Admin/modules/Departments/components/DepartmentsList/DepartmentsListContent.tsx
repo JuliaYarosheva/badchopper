@@ -2,41 +2,53 @@ import React from 'react';
 import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLayout';
 import {DepartmentsListItem} from './DepartmentsListItem';
 import {EmptyContent} from '../../../../baseComponents/EmptyContent/EmptyContent';
+import {PendingCloak} from '../../../../baseComponents/PendingCloak/PendingCloak';
 
 const DepartmentsListContent = (
     {
-        departmentsData
+        pending,
+        departmentsList
     }
 ) => {
-    const hasDepartments = departmentsData.length !== 0;
+    const hasDepartments = departmentsList.length !== 0;
 
     return (
-        <ContentLayout>
+        <>
             {
-                hasDepartments && (
-                    <>
+                pending && (
+                    <PendingCloak/>
+                )
+            }
+            {
+                !pending && (
+                    <ContentLayout>
                         {
-                            departmentsData.map(item => {
-                                return (
-                                    <DepartmentsListItem
-                                        key={item._id}
-                                        departmentItem={item}
-                                    />
-                                )
-                            })
+                            hasDepartments && (
+                                <>
+                                    {
+                                        departmentsList.map(item => {
+                                            return (
+                                                <DepartmentsListItem
+                                                    key={item._id}
+                                                    departmentItem={item}
+                                                />
+                                            )
+                                        })
+                                    }
+                                </>
+                            )
                         }
-                    </>
+                        {
+                            !hasDepartments && (
+                                <EmptyContent>
+                                    !!Добавьте филиал
+                                </EmptyContent>
+                            )
+                        }
+                    </ContentLayout>
                 )
             }
-            {
-
-                !hasDepartments && (
-                    <EmptyContent>
-                        !!Добавьте филиал
-                    </EmptyContent>
-                )
-            }
-        </ContentLayout>
+        </>
     );
 };
 

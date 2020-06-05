@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {UploaderContext} from './store/consts';
-import { AdminAppContext }  from '../../../../App/store/AdminAppContext/consts';
+import { AdminAppContext }  from '../../../../App/store/AdminAppContext/const';
 
 import { isUndefined } from '../../../../../utils';
 
@@ -14,17 +14,12 @@ const Uploader = (
 		url,
 		name,
 		render,
+        unMount,
 		multiple,
 		handleUploadProgress
 	}
 ) => {
-	const {
-        //@ts-ignore
-		addUploaderToGlobalContext,
-        //@ts-ignore
-		removeUploaderFromGlobalContext
-        //@ts-ignore
-	} = useContext(AdminAppContext);
+	const {addUploaderToGlobalContext, removeUploaderFromGlobalContext} = useContext(AdminAppContext);
 
 	const {
 		files,
@@ -46,9 +41,12 @@ const Uploader = (
 			}
 		});
 
-		return () => {
-			removeUploaderFromGlobalContext(name);
-		};
+		if (unMount) {
+            return () => {
+                removeUploaderFromGlobalContext(name);
+            };
+        }
+        // eslint-disable-next-line
 	}, []);
 
 
@@ -109,6 +107,7 @@ const UploaderWithContext = (
 		url,
 		name,
 		render,
+        unMount,
 		multiple,
 		handleUploadProgress
 	}
@@ -119,16 +118,22 @@ const UploaderWithContext = (
 			url={url}
 			name={name}
 			render={render}
+            unMount={unMount}
 			multiple={multiple}
 			handleUploadProgress={handleUploadProgress}
 		/>
 	</UploaderContextProvider>
 );
 
+Uploader.defaultProps = {
+    unMount: true
+};
+
 Uploader.propTypes = {
 	id: PropTypes.number,
 	url: PropTypes.string,
 	name: PropTypes.string,
+    unMount: PropTypes.bool,
 	render: PropTypes.func,
 	multiple: PropTypes.number,
 	handleUploadProgress: PropTypes.func,
@@ -143,6 +148,7 @@ UploaderWithContext.propTypes = {
 	url: PropTypes.string,
 	name: PropTypes.string,
 	render: PropTypes.func,
+    unMount: PropTypes.bool,
 	multiple: PropTypes.number,
 	handleUploadProgress: PropTypes.func,
 };

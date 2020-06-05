@@ -1,5 +1,5 @@
 import React from 'react';
-import {FORMS} from '../../consts';
+import {FORMS} from '../../const';
 import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
 import {Field} from '../../../../baseComponents/Form';
 import {Textbox, Textarea} from '../../../../baseComponents/Form/Adapters';

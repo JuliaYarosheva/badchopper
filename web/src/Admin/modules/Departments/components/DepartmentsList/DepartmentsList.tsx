@@ -1,25 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {DepartmentsListHeader} from './DepartmentsListHeader';
 import {DepartmentsListContent} from './DepartmentsListContent';
 import {getAllDepartments} from '../../api';
+import {DepartmentsContext} from '../../store';
 
-type DepartmentsDataType = object[]
-
-const DepartmentsDataInitialValues = [];
+type PendingType = boolean;
 
 const DepartmentsList = () => {
-    const [departmentsData, setDepartmentsData] = useState<DepartmentsDataType>(DepartmentsDataInitialValues);
+    const {departmentsList, setAllDepartments} = useContext(DepartmentsContext);
+
+    const [pending, setPending] = useState<PendingType>(false);
 
     useEffect(() => {
+        setPending(true);
         getAllDepartments()
-            .then(({ data }) => setDepartmentsData(data))
+            .then(({ data }) => {
+                setAllDepartments(data);
+                setPending(false);
+            })
+        // eslint-disable-next-line
     }, []);
 
     return (
         <>
             <DepartmentsListHeader/>
             <DepartmentsListContent
-                departmentsData={departmentsData}
+                pending={pending}
+                departmentsList={departmentsList}
             />
         </>
     );

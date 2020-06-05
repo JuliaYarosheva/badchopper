@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {FC} from 'react';
 
 import { ScrollContainer } from '../../ScrollContainer/ScrollContainer';
 import { PendingCloak } from '../../PendingCloak/PendingCloak';
 
 import classes from '../styles/index.module.scss';
 import ClassNames from 'classnames';
+import {ModelContentType} from '../types';
 
-const ModalContent = (
+const ModalContent: FC<ModelContentType> = (
 	{
 		children,
 		isPending,
@@ -37,12 +37,6 @@ const ModalContent = (
 			</ScrollContainer>
 		</div>
 	);
-};
-
-ModalContent.propTypes = {
-	isPending: PropTypes.bool,
-	autoHeight: PropTypes.bool,
-	className: PropTypes.string
 };
 
 export { ModalContent };

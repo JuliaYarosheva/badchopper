@@ -8,6 +8,7 @@ import {ROUTES} from '../../contst';
 import {Assistance} from '../../modules/Assistance/Assistance';
 import {Feedbacks} from '../../modules/Feedbacks/Feedbacks';
 import {Departments} from '../../modules/Departments/Departments';
+import {Media} from '../../modules/Media/Media';
 import classes from './styles/index.module.scss'
 
 const Content = () => {
@@ -22,6 +23,9 @@ const Content = () => {
 				</Route>
                 <Route path={ROUTES.DEPARTMENTS}>
                     <Departments/>
+                </Route>
+                <Route path={ROUTES.MEDIA}>
+                    <Media/>
                 </Route>
 			</Switch>
         </div>

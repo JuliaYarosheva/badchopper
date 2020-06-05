@@ -1,14 +1,14 @@
 import {GET, POST} from '../../../utils/api';
-import {ROUTE} from './const';
+import {ENDPOINTS} from './const';
 
 export const addDepartment = (data) => {
-    return POST(ROUTE.ADD_DEPARTMENT, data)
+    return POST(ENDPOINTS.ADD_DEPARTMENT, data)
 };
 
 export const getAllDepartments = () => {
-    return GET(ROUTE.GET_ALL_DEPARTMENTS)
+    return GET(ENDPOINTS.GET_ALL_DEPARTMENTS)
 };
 
 export const getDepartmentDetail = (id) => {
-    return GET(`${ROUTE.GET_DEPARTMENT_DETAIL}/${id}`)
+    return GET(`${ENDPOINTS.GET_DEPARTMENT_DETAIL}/${id}`)
 };

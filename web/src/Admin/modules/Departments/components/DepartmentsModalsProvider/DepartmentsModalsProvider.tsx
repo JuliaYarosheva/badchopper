@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { MODALS, DepartmentsModalsContext } from '../../consts';
+import { MODALS, DepartmentsModalsContext } from './const';
 import {DepartmentAddModal} from '../DepartmentAddModal/DepartmentAddModal';
 
 export const DepartmentsModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
-	const [isIsAddDepartmentModalOpen, setIsAddDepartmentModalOpen] = useState(false);
+	const [isAddDepartmentModalOpen, setIsAddDepartmentModalOpen] = useState(false);
 
 	const modalState = {
 		[MODALS.ADD_DEPARTMENT_MODAL]: setIsAddDepartmentModalOpen,
@@ -35,7 +35,7 @@ export const DepartmentsModalsProvider = ({ children }) => {
 			</DepartmentsModalsContext.Provider>
             <DepartmentAddModal
                 modalData={modalData}
-                isOpen={isIsAddDepartmentModalOpen}
+                isOpen={isAddDepartmentModalOpen}
                 handleClose={() => closeModal(MODALS.ADD_DEPARTMENT_MODAL)}
             />
 		</>
