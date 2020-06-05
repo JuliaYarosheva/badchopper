@@ -4,12 +4,13 @@ import {
     Route
 } from "react-router-dom";
 
-import {ROUTES} from '../../contst';
+import {ROUTES} from './routes';
 import {Assistance} from '../../modules/Assistance/Assistance';
 import {Feedbacks} from '../../modules/Feedbacks/Feedbacks';
 import {Departments} from '../../modules/Departments/Departments';
 import {Media} from '../../modules/Media/Media';
 import classes from './styles/index.module.scss'
+import {DepartmentAdd} from '../../modules/Departments/components/DepartmentAdd/DepartmentAdd';
 
 const Content = () => {
     return (
@@ -26,6 +27,9 @@ const Content = () => {
                 </Route>
                 <Route path={ROUTES.MEDIA}>
                     <Media/>
+                </Route>
+                <Route path={ROUTES.ADD_DEPARTMENT}>
+                    <DepartmentAdd/>
                 </Route>
 			</Switch>
         </div>

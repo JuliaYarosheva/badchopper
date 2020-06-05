@@ -1,18 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useHistory } from "react-router-dom";
 import ContentHeader, {ContentHeaderLeft, ContentHeaderRight} from '../../../../adminComponents/ContentHeader';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {Button} from '../../../../baseComponents/Button/Button';
 import classes from './styles/index.module.scss';
-import {DepartmentsModalsContext, MODALS} from '../DepartmentsModalsProvider/const';
+import {ROUTES} from '../../../../adminComponents/Content/routes';
 
 const DepartmentsListHeader = () => {
-
-    const { openModal } = useContext(DepartmentsModalsContext);
+    const history = useHistory();
 
     const actionButtonHandler = () => {
-        if (!!openModal) {
-            openModal(MODALS.ADD_DEPARTMENT_MODAL);
-        }
+        history.push(ROUTES.ADD_DEPARTMENT);
     };
 
     return (

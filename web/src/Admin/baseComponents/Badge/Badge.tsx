@@ -38,7 +38,7 @@ const Badge = forwardRef<{}, BadgeProps>((
 });
 
 Badge.defaultProps = {
-    type: 'primary'
+    type: 'info'
 };
 
 export { Badge };

@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
-import { MODALS, DepartmentsModalsContext } from './const';
-import {DepartmentAddModal} from '../DepartmentAddModal/DepartmentAddModal';
+import { DepartmentsModalsContext } from './const';
 
 export const DepartmentsModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
-	const [isAddDepartmentModalOpen, setIsAddDepartmentModalOpen] = useState(false);
 
 	const modalState = {
-		[MODALS.ADD_DEPARTMENT_MODAL]: setIsAddDepartmentModalOpen,
+		//[MODALS.ADD_DEPARTMENT_MODAL]: setIsAddDepartmentModalOpen,
 	};
 
 	const openModal = (modalName, data) => {
@@ -33,11 +31,7 @@ export const DepartmentsModalsProvider = ({ children }) => {
 			<DepartmentsModalsContext.Provider value={{ ...modalProviderActions }}>
 				{ children }
 			</DepartmentsModalsContext.Provider>
-            <DepartmentAddModal
-                modalData={modalData}
-                isOpen={isAddDepartmentModalOpen}
-                handleClose={() => closeModal(MODALS.ADD_DEPARTMENT_MODAL)}
-            />
+
 		</>
 	);
 };

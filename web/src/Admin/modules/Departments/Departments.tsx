@@ -4,7 +4,7 @@ import {Route} from "react-router-dom";
 import {DepartmentsModalsProvider} from './components/DepartmentsModalsProvider/DepartmentsModalsProvider';
 import {DepartmentsDetail} from './components/DepartmentsDetail/DepartmentsDetail';
 import {DepartmentsList} from './components/DepartmentsList/DepartmentsList';
-import {ROUTES} from '../../contst';
+import {ROUTES} from '../../adminComponents/Content/routes';
 import {DepartmentsContextProvider} from './store/DepartmentsContext';
 
 const Departments = () => {
