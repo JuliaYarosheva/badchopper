@@ -8,7 +8,7 @@ import { isNull, actionLoggerWarning, actionLogger } from '../../../utils';
 type FormType = {
     name: string;
     children: object | [];
-    onSubmit: (object) => void;
+    onSubmit: (object, resetFormValues) => void;
     initialValues: object;
     restFormValues: boolean;
 }
@@ -49,7 +49,7 @@ const Form = memo<FormType>((
 	}, []);
 
 	const handleSuccess = useCallback((values) => {
-		onSubmit(values);
+		onSubmit(values, resetFormValues);
 		actionLogger(`SUBMIT FROM: "${name}"`);
 
 		if (restFormValues) {
@@ -104,7 +104,7 @@ const Form = memo<FormType>((
 
 	//set submit function to global context on init
 	useEffect(() => {
-		addFormToGlobalContext({ [name]: { submitForm } });
+		addFormToGlobalContext({ [name]: { submitForm,  resetFormValues } });
 
 		return () => {
 			removeFormFromGlobalContext(name);
@@ -117,7 +117,7 @@ const Form = memo<FormType>((
 		e.preventDefault();
 
 		validateForm(fieldsRef.current, valuesRef.current)
-			.then((values) => onSubmit(values))
+			.then((values) => onSubmit(values, resetFormValues))
 			.catch(e => console.log(e));
 	};
 

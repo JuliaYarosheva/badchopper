@@ -34,6 +34,7 @@ const Modal = (
             [classes.modal_small]: size === 'small',
             [classes.modal_medium]: size === 'medium',
             [classes.modal_large]: size === 'large',
+            [classes.modal_ultraLarge]: size === 'ultraLarge',
             [classes.modal_extraHeight]: extraHeight
         }
     );
@@ -60,7 +61,11 @@ const Modal = (
 			</CSSTransition>
             {
                 isOpen && (
-                    <div className={classes.backGround}></div>
+                    <div
+                        onClick={handleClose}
+                        className={classes.backGround}
+                    >
+                    </div>
                 )
             }
         </>

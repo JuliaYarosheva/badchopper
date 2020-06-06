@@ -1,4 +1,4 @@
-type MediaImageType = {
+export type MediaImagesType = {
     _id: string;
     name: string;
     path: string;
@@ -6,6 +6,6 @@ type MediaImageType = {
 }[]
 
 export type MediaContextType = {
-    images: MediaImageType,
-    setAllImages: ([]: MediaImageType) => void;
+    images: MediaImagesType,
+    setAllImages: ([]: MediaImagesType) => void;
 };

@@ -1,5 +1,6 @@
 type SubmitFormType = {
     submitForm: () => {};
+    resetFormValues: () => {};
 };
 
 export type AdminAppFormContextType = {

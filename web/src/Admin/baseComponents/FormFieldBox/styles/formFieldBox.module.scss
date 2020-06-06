@@ -23,6 +23,8 @@
 	border: 1px solid $disabled;
 	box-shadow: none;
 	position: relative;
+
+	@include transition(border-color .2s)
 }
 
 .formFieldBox_tooltip {

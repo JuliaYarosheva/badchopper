@@ -1,6 +1,7 @@
 import {addDepartment} from '../../api';
 
 export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
+
     const {
         city,
         street,
@@ -23,6 +24,8 @@ export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
         }
     };
 
-    addDepartment(requestData)
-        .then(() => onAddDepartmentSuccess())
+    return addDepartment(requestData)
+        .then(() => {
+            onAddDepartmentSuccess();
+        })
 };

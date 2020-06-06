@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import {DepartmentsModalsContextType} from './types';
 
 export const MODALS = {
-  ADD_DEPARTMENT_MODAL: 'ADD_DEPARTMENT_MODAL'
+  MEDIA_SELECT_MODAL: 'MEDIA_SELECT_MODAL'
 };
 
 const defaultProps: DepartmentsModalsContextType = {};

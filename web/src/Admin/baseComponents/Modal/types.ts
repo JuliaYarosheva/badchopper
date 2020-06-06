@@ -2,7 +2,7 @@ import React from 'react';
 
 export type ModalComponentType = {
     isOpen: boolean;
-    modalData: object;
+    modalData?: object;
     handleClose: () => void;
 }
 

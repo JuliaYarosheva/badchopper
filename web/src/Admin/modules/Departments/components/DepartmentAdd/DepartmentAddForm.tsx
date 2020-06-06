@@ -8,18 +8,27 @@ import {DepartmentAddFormMedia} from './DepartmentAddFormMedia';
 
 const DepartmentAddForm = (
     {
-        handleAddDepartment
+        selectedMediaId,
+        handleSelectMedia,
+        handleAddDepartment,
+        handleDeleteImage,
+        hasSelectedMedia
     }
 ) => {
     return (
         <Form
-            name={FORMS.ADD_DEPARTMENT_FORM}
             onSubmit={handleAddDepartment}
+            name={FORMS.ADD_DEPARTMENT_FORM}
         >
             <GridLayout>
                 <GridLayoutRow grid="6-6">
                     <DepartmentAddFormGeneral/>
-                    <DepartmentAddFormMedia/>
+                    <DepartmentAddFormMedia
+                        hasSelectedMedia={hasSelectedMedia}
+                        selectedMediaId={selectedMediaId}
+                        handleDeleteImage={handleDeleteImage}
+                        handleSelectMedia={handleSelectMedia}
+                    />
                 </GridLayoutRow>
             </GridLayout>
         </Form>

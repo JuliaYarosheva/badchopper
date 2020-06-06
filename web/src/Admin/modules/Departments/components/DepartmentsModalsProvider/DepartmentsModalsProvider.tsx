@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-import { DepartmentsModalsContext } from './const';
+import { MODALS, DepartmentsModalsContext } from './const';
+import {MediaSelectModal} from '../../../../baseComponents/MediaSelectModal/MediaSelectModal';
 
 export const DepartmentsModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
+	const [isMediaSelectModalOpen, setIsMediaSelectModalOpen] = useState(false);
 
 	const modalState = {
-		//[MODALS.ADD_DEPARTMENT_MODAL]: setIsAddDepartmentModalOpen,
+		[MODALS.MEDIA_SELECT_MODAL]: setIsMediaSelectModalOpen,
 	};
 
 	const openModal = (modalName, data) => {
@@ -31,7 +33,11 @@ export const DepartmentsModalsProvider = ({ children }) => {
 			<DepartmentsModalsContext.Provider value={{ ...modalProviderActions }}>
 				{ children }
 			</DepartmentsModalsContext.Provider>
-
+            <MediaSelectModal
+                modalData={modalData}
+                isOpen={isMediaSelectModalOpen}
+                handleClose={() => closeModal(MODALS.MEDIA_SELECT_MODAL)}
+            />
 		</>
 	);
 };

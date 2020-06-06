@@ -1,5 +1,6 @@
 @import "../../../../../styles/colors/colors.module";
 @import "../../../../../styles/mixins/_hover.module";
+@import "../../../../../styles/mixins/_transition.module";
 
 .navigationListItemWithItems {
 	display: flex;
@@ -38,4 +39,11 @@
 
 .navigationListItemWithItems__iconCollapse {
 	font-size: 20px;
+	border-radius: 50%;
+
+	@include transition(background-color .2s);
+
+	@include hover {
+		background-color: lighten($navHoverBackGround, 10%);
+	};
 }

@@ -32,7 +32,7 @@ const Checkbox = (
 
 	const ToggleCheckbox = () => {
 		setCheckboxValue(!checkboxValue);
-		onFieldChange(!checkboxValue);
+		onFieldChange(!checkboxValue, setCheckboxValue);
 	};
 
 	const componentClassName = ClassNames(
