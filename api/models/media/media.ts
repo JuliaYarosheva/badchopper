@@ -24,6 +24,16 @@ const getAllImagesModel = (client) => {
     });
 };
 
+const getImageModel = (id, client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONSTS.BASE_COLLECTION)
+            .findOne({_id: new ObjectID(id)}, {})
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
 const deleteImageModel = (deleteImageDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
@@ -37,5 +47,6 @@ const deleteImageModel = (deleteImageDTO: documentIdType, client) => {
 export {
     addImageModel,
     deleteImageModel,
-    getAllImagesModel
+    getAllImagesModel,
+    getImageModel
 };

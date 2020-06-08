@@ -4,7 +4,8 @@ import { mediaImageDTOType } from "../../types/mediaTypes";
 import {
     addImageModel,
     deleteImageModel,
-    getAllImagesModel
+    getAllImagesModel,
+    getImageModel
 } from "../../models/media/media";
 import { saveFiles, deleteFile } from "../../utils/media";
 
@@ -25,6 +26,10 @@ const uploadImageService = (req, client) => {
 
 const getAllImagesService = (client) => {
     return getAllImagesModel(client);
+};
+
+const getImageService = (id, client) => {
+    return getImageModel(id, client);
 };
 
 const deleteImageService = (deleteImageDTO: documentIdType, client) => {
@@ -54,5 +59,6 @@ const deleteImageService = (deleteImageDTO: documentIdType, client) => {
 export {
     getAllImagesService,
     uploadImageService,
-    deleteImageService
+    deleteImageService,
+    getImageService
 }

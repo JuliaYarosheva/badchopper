@@ -17,7 +17,10 @@ type updateDocumentResponseStatusType = {
     ok: number
 }
 
-type getDocumentResponseStatusType = object[]
+type getDocumentResponseStatusType = {
+    _id: string;
+    imageId: string;
+}
 
 export {
     documentIdType,

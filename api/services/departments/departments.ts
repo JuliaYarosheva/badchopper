@@ -15,6 +15,8 @@ import {
     deleteDocumentResponseStatusType,
     updateDocumentResponseStatusType,
 } from "../../types/general";
+import {getImageModel} from '../../models/media/media';
+import {getImageService} from '../media/media';
 
 const addDepartmentService = (departmentDTO: departmentDTOType, client) => {
     console.log(departmentDTO);
@@ -46,12 +48,16 @@ const updateDepartmentService = (updateDepartmentDTO, client) => {
 };
 
 const getDepartmentService = (getDepartmentDTO: documentIdType, client) => {
-    console.log(getDepartmentDTO);
     if (getDepartmentDTO.id.length !== 0) {
         return getDepartmentModel(getDepartmentDTO, client)
             .then((status: getDocumentResponseStatusType) => {
-                if (status.length !== 0) {
-                    return status;
+                if (status._id) {
+                    return getImageService(status.imageId, client).then(image => {
+                        return {
+                            image,
+                            ...status
+                        }
+                    });
                 }
 
                 throw Error('Department was not selected')

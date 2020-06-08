@@ -39,7 +39,7 @@ const DepartmentAddContent = () => {
             return;
         }
 
-        addDepartmentHook(values, onAddDepartmentSuccess);
+        addDepartmentHook({...values, imageId: mediaIdRef.current }, onAddDepartmentSuccess);
         resetFormValues();
     };
 
