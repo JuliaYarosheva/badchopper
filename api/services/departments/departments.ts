@@ -6,7 +6,8 @@ import {
     getAllDepartmentsModel
 } from '../../models/departments/departments'
 import {
-    departmentDTOType,
+    DepartmentDTOType,
+    DepartmentsDTOType
 } from "../../types/departmentsTypes";
 
 import {
@@ -15,18 +16,26 @@ import {
     deleteDocumentResponseStatusType,
     updateDocumentResponseStatusType,
 } from "../../types/general";
-import {getImageModel} from '../../models/media/media';
 import {getImageService} from '../media/media';
 
-const addDepartmentService = (departmentDTO: departmentDTOType, client) => {
-    console.log(departmentDTO);
+const addDepartmentService = (departmentDTO: DepartmentDTOType, client) => {
     if (departmentDTO.name.length !== 0) {
         return addDepartmentModel(departmentDTO, client)
     }
 };
 
-const getAllDepartmentsService = (client) => {
-    return getAllDepartmentsModel(client)
+const getAllDepartmentsService = async (client) => {
+    const departments = await getAllDepartmentsModel(client)
+        .then((data: DepartmentsDTOType) => data);
+
+    return Promise.all(departments.map(async (department) => {
+        const image = await getImageService(department.imageId, client).then(image => image);
+
+        return {
+            image,
+            ...department
+        }
+    }));
 };
 
 const updateDepartmentService = (updateDepartmentDTO, client) => {
@@ -50,12 +59,12 @@ const updateDepartmentService = (updateDepartmentDTO, client) => {
 const getDepartmentService = (getDepartmentDTO: documentIdType, client) => {
     if (getDepartmentDTO.id.length !== 0) {
         return getDepartmentModel(getDepartmentDTO, client)
-            .then((status: getDocumentResponseStatusType) => {
-                if (status._id) {
-                    return getImageService(status.imageId, client).then(image => {
+            .then((data: getDocumentResponseStatusType) => {
+                if (data._id) {
+                    return getImageService(data.imageId, client).then(image => {
                         return {
                             image,
-                            ...status
+                            ...data
                         }
                     });
                 }

@@ -1,16 +1,27 @@
-import React, {useContext, useState, useRef} from 'react';
+import React, {useContext, useState, useRef, FC, useEffect} from 'react';
 import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLayout';
 import {DepartmentAddForm} from './DepartmentAddForm';
 import {addDepartmentHook} from './hooks';
 import {NavigationContext} from '../../../../adminComponents/Navigation/store';
 import {getNavigationList} from '../../../../adminComponents/Navigation/api';
-import {isNull} from '../../../../../utils';
+import {isNull, isNullOrUndefined} from '../../../../../utils';
+import {DepartmentAddContentType} from '../../types';
 
-const DepartmentAddContent = () => {
+const DepartmentAddContent: FC<DepartmentAddContentType> = (
+    {
+        initialValues
+    }
+) => {
     const {setNavigationList} = useContext(NavigationContext);
     const mediaIdRef = useRef(null);
     const [selectedMediaId, setSelectedMediaId] = useState(null);
     const [hasSelectedMedia, setHasSelectedMedia] = useState(true);
+
+    useEffect(() => {
+        if (!isNullOrUndefined(initialValues)) {
+            handleSelectMedia([initialValues?.imageId])
+        }
+    }, [initialValues]);
 
     const onAddDepartmentSuccess = () => {
         getNavigationList()
@@ -43,9 +54,13 @@ const DepartmentAddContent = () => {
         resetFormValues();
     };
 
+    const hasInitialValues = !isNullOrUndefined(initialValues);
+
     return (
         <ContentLayout>
             <DepartmentAddForm
+                initialValues={initialValues}
+                hasInitialValues={hasInitialValues}
                 selectedMediaId={selectedMediaId}
                 hasSelectedMedia={hasSelectedMedia}
                 handleDeleteImage={handleDeleteImage}

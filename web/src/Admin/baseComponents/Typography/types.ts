@@ -6,4 +6,5 @@ export type TypographyType = {
     className?: string;
     children: React.ReactNode;
     displayBlock?: boolean;
+    light?: boolean;
 };

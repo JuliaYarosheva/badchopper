@@ -3,34 +3,48 @@ import {useParams} from "react-router-dom";
 import {DepartmentsDetailHeader} from './DepartmentsDetailHeader';
 import {DepartmentsDetailContent} from './DepartmentsDetailContent';
 import {getDepartmentDetail} from '../../api';
+import {PendingCloak} from '../../../../baseComponents/PendingCloak/PendingCloak';
 
 type DepartmentsDetailDataType = {
     name: string
 }
 
-const DepartmentsDetailDataInitialValues = {
-    name: ''
-};
-
 const DepartmentsDetail = () => {
     const { id } = useParams();
 
-    const [departmentData, setDepartmentData] = useState<DepartmentsDetailDataType>(DepartmentsDetailDataInitialValues);
+    const [departmentData, setDepartmentData] = useState<DepartmentsDetailDataType>();
+    const [pending, setPending] = useState(false);
+
     useEffect(() => {
+        setPending(true);
         getDepartmentDetail(id)
-            .then(({ data }) => setDepartmentData(data))
+            .then(({ data }) => {
+                setDepartmentData(data);
+                setPending(false);
+            })
             .catch(error => console.log(error))
 
     }, [id]);
 
     return (
         <>
-            <DepartmentsDetailHeader
-                departmentName={departmentData.name}
-            />
-            <DepartmentsDetailContent
-                departmentData={departmentData}
-            />
+            {
+                pending && (
+                    <PendingCloak/>
+                )
+            }
+            {
+                !pending && departmentData && (
+                   <>
+                       <DepartmentsDetailHeader
+                           departmentData={departmentData}
+                       />
+                       <DepartmentsDetailContent
+                           departmentData={departmentData}
+                       />
+                   </>
+                )
+            }
         </>
     );
 };

@@ -12,18 +12,24 @@ const DepartmentAddForm = (
         handleSelectMedia,
         handleAddDepartment,
         handleDeleteImage,
-        hasSelectedMedia
+        hasSelectedMedia,
+        initialValues,
+        hasInitialValues
     }
 ) => {
     return (
         <Form
+            initialValues={initialValues}
             onSubmit={handleAddDepartment}
             name={FORMS.ADD_DEPARTMENT_FORM}
         >
             <GridLayout>
                 <GridLayoutRow grid="6-6">
-                    <DepartmentAddFormGeneral/>
+                    <DepartmentAddFormGeneral
+                        hasInitialValues={hasInitialValues}
+                    />
                     <DepartmentAddFormMedia
+                        hasInitialValues={hasInitialValues}
                         hasSelectedMedia={hasSelectedMedia}
                         selectedMediaId={selectedMediaId}
                         handleDeleteImage={handleDeleteImage}

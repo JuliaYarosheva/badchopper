@@ -19,7 +19,8 @@ const FormFieldBox = (
 		toolTipIcon,
 		toolTipMessage,
 		hasFocus,
-		displayInline
+		displayInline,
+        previewMode
 	}
 ) => {
 	const componentClassName = classNames(
@@ -31,7 +32,7 @@ const FormFieldBox = (
 	const fieldWrapperClassName = classNames(
 		{
 			[classes.formFieldBox_fieldWrapper__hasError]: hasErrors,
-			[classes.formFieldBox_fieldWrapper]: hasBorder,
+			[classes.formFieldBox_fieldWrapper]: hasBorder && !previewMode,
 			[classes.formFieldBox_fieldWrapper__hasFocus]: hasFocus,
 			[classes.formFieldBox_fieldWrapper__displayInline]: displayInline
 		}

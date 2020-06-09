@@ -4,6 +4,10 @@ import {DepartmentsListItem} from './DepartmentsListItem';
 import {EmptyContent} from '../../../../baseComponents/EmptyContent/EmptyContent';
 import {PendingCloak} from '../../../../baseComponents/PendingCloak/PendingCloak';
 
+import classes from './styles/index.module.scss';
+import {Link} from '../../../../baseComponents/Link/Link';
+import {ROUTES} from '../../../../adminComponents/Content/routes';
+
 const DepartmentsListContent = (
     {
         pending,
@@ -24,18 +28,23 @@ const DepartmentsListContent = (
                     <ContentLayout>
                         {
                             hasDepartments && (
-                                <>
+                                <div className={classes.departmentsListContent}>
                                     {
                                         departmentsList.map(item => {
                                             return (
-                                                <DepartmentsListItem
+                                                <Link
                                                     key={item._id}
-                                                    departmentItem={item}
-                                                />
+                                                    link={`${ROUTES.DEPARTMENTS_DETAIL_LINK}${item._id}`}
+                                                    className={classes.departmentsListItem}
+                                                >
+                                                    <DepartmentsListItem
+                                                        departmentItem={item}
+                                                    />
+                                                </Link>
                                             )
                                         })
                                     }
-                                </>
+                                </div>
                             )
                         }
                         {

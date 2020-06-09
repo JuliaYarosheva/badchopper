@@ -1,4 +1,4 @@
-type departmentDTOType = {
+type DepartmentDTOType = {
     id?: string;
     name: string;
     description: string;
@@ -10,9 +10,13 @@ type departmentDTOType = {
     location: {
         latitude: string;
         longitude: string;
-    }
+    },
+    imageId: string
 }
 
+type DepartmentsDTOType = DepartmentDTOType[]
+
 export {
-    departmentDTOType
+    DepartmentDTOType,
+    DepartmentsDTOType
 };

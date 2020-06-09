@@ -10,7 +10,8 @@ const Typography: FC<TypographyType> = (
 		variant,
 		children,
         className,
-		displayBlock
+		displayBlock,
+        light
 	}
 ) => {
 	const componentClassName = ClassNames(
@@ -23,6 +24,8 @@ const Typography: FC<TypographyType> = (
 			[classes.typography_20]: variant === '20',
 			[classes.typography_22]: variant === '22',
 			[classes.typography_24]: variant === '24',
+			[classes.typography_26]: variant === '26',
+			[classes.typography_28]: variant === '28',
 			[classes.typography_32]: variant === '32',
 			[classes.typography_bold200]: bold === '200',
 			[classes.typography_bold300]: bold === '300',
@@ -31,7 +34,8 @@ const Typography: FC<TypographyType> = (
 			[classes.typography_bold600]: bold === '600',
 			[classes.typography_bold700]: bold === '700',
 			[classes.typography_bold800]: bold === '800',
-			[classes.typography_displayBlock]: displayBlock
+			[classes.typography_displayBlock]: displayBlock,
+			[classes.typography_light]: light
 		},
         className
 	);
@@ -45,6 +49,7 @@ Typography.defaultProps = {
 	bold: '400',
 	variant: '16',
 	displayBlock: false,
+	light: false,
 };
 
 export { Typography };

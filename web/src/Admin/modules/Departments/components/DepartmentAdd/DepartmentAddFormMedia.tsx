@@ -1,22 +1,19 @@
-import React, {useContext, useEffect, useState, useMemo} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {PaddingBox} from '../../../../baseComponents/PaddingBox/PaddingBox';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
-import {DepartmentsModalsContext, MODALS} from '../DepartmentsModalsProvider/const';
-import {DepartmentAddMediaButton} from './DepartmentAddMediaButton';
 import {getAllImages} from '../../../Media/api';
 import {MediaImagesType} from '../../../Media/store/types';
-import {isNullOrUndefined} from '../../../../../utils';
-import {DepartmentAddSelectedMedia} from './DepartmentAddSelectedMedia';
+import {DepartmentAddMedia} from './DepartmentAddMedia';
 
 const DepartmentAddFormMedia = (
     {
         selectedMediaId,
         handleSelectMedia,
         handleDeleteImage,
-        hasSelectedMedia
+        hasSelectedMedia,
+        hasInitialValues
     }
 ) => {
-    const {openModal} = useContext(DepartmentsModalsContext);
     const [mediaData, setMediaData] = useState<MediaImagesType>([]);
 
     useEffect(() => {
@@ -26,26 +23,9 @@ const DepartmentAddFormMedia = (
             .then(({data}) => setMediaData(data))
     }, []);
 
-    const handleOpenMediaModal = () => {
-        if (typeof openModal === 'undefined') return;
-
-        openModal(
-            MODALS.MEDIA_SELECT_MODAL,
-            {
-                modalTitle: '!!Выберите одно изображение',
-                rightButtonLabel: '!!Выбрать',
-                handleSubmit: handleSelectMedia,
-                mediaData,
-                singleSelect: true
-            }
-        )
-    };
-
     const selectedMedia = useMemo(() => {
-        if (!hasSelectedMedia) return;
-
         return mediaData.find(item => item._id === selectedMediaId)
-    }, [selectedMediaId, mediaData, hasSelectedMedia]);
+    }, [selectedMediaId, mediaData]);
 
     return (
        <>
@@ -55,24 +35,15 @@ const DepartmentAddFormMedia = (
                </Typography>
            </PaddingBox>
            <PaddingBox small>
-               {
-                   !isNullOrUndefined(selectedMedia) && (
-                       <DepartmentAddSelectedMedia
-                           selectedMedia={selectedMedia}
-                           handleDeleteImage={handleDeleteImage}
-                       />
-                   )
-               }
-               {
-                   isNullOrUndefined(selectedMedia) && (
-
-                           <DepartmentAddMediaButton
-                               handleClick={handleOpenMediaModal}
-                               hasSelectedMedia={hasSelectedMedia}
-                           />
-
-                   )
-               }
+               <DepartmentAddMedia
+                   singleSelect
+                   mediaData={mediaData}
+                   showDeleteButton={!hasInitialValues}
+                   hasSelectedMedia={hasSelectedMedia}
+                   selectedMedia={[selectedMedia]}
+                   handleSelectMedia={handleSelectMedia}
+                   handleDeleteImage={handleDeleteImage}
+               />
            </PaddingBox>
        </>
     );

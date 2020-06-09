@@ -6,7 +6,11 @@ import {Field} from '../../../../baseComponents/Form';
 import {Textarea, Textbox} from '../../../../baseComponents/Form/Adapters';
 import FormLayout from '../../../../baseComponents/FormLayout';
 
-const DepartmentAddFormGeneral = () => {
+const DepartmentAddFormGeneral = (
+    {
+        hasInitialValues
+    }
+) => {
     return (
         <>
 			<PaddingBox hrSmall>
@@ -22,6 +26,7 @@ const DepartmentAddFormGeneral = () => {
                             name="name"
                             label="!!!Название филиала"
                             required
+                            previewMode={hasInitialValues}
                             validate={{
                                 required: true
                             }}
@@ -33,6 +38,7 @@ const DepartmentAddFormGeneral = () => {
                             name="description"
                             label="!!!Описание"
                             required
+                            previewMode={hasInitialValues}
                             validate={{
                                 required: true
                             }}
@@ -44,6 +50,7 @@ const DepartmentAddFormGeneral = () => {
                             name="city"
                             label="!!!Город"
                             required
+                            previewMode={hasInitialValues}
                             validate={{
                                 required: true
                             }}
@@ -60,6 +67,7 @@ const DepartmentAddFormGeneral = () => {
                                 name="street"
                                 label="!!!Улица"
                                 required
+                                previewMode={hasInitialValues}
                                 validate={{
                                     required: true
                                 }}
@@ -71,6 +79,7 @@ const DepartmentAddFormGeneral = () => {
                                 name="number"
                                 label="!!!Номер"
                                 required
+                                previewMode={hasInitialValues}
                                 validate={{
                                     required: true
                                 }}
@@ -83,6 +92,7 @@ const DepartmentAddFormGeneral = () => {
                             name="phone"
                             label="!!!Телефон"
                             required
+                            previewMode={hasInitialValues}
                             placeholder="+38_(000)_000_00_00"
                             validate={{
                                 required: true
@@ -103,6 +113,7 @@ const DepartmentAddFormGeneral = () => {
                                 name="latitude"
                                 label="!!!Широта"
                                 required
+                                previewMode={hasInitialValues}
                                 validate={{
                                     required: true
                                 }}
@@ -115,6 +126,7 @@ const DepartmentAddFormGeneral = () => {
                                 name="longitude"
                                 label="!!!Долгота"
                                 required
+                                previewMode={hasInitialValues}
                                 validate={{
                                     required: true
                                 }}

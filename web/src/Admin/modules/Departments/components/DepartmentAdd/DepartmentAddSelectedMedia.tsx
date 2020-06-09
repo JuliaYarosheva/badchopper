@@ -6,19 +6,24 @@ import deleteCircleOutline from '@iconify/icons-mdi/delete-circle-outline';
 
 const DepartmentAddSelectedMedia = (
     {
-        selectedMedia,
+        media,
+        showDeleteButton,
         handleDeleteImage
     }
 ) => {
     return (
         <div className={classes.departmentAddSelectedMedia}>
-            <div onClick={handleDeleteImage}>
-                <Icon
-                    icon={deleteCircleOutline}
-                    className={classes.departmentAddSelectedMedia__deleteIcon}
-                />
-            </div>
-            <img src={`http://localhost:4040/${selectedMedia.path}`} alt={selectedMedia.name}/>
+            {
+                showDeleteButton && (
+                    <div onClick={handleDeleteImage}>
+                        <Icon
+                            icon={deleteCircleOutline}
+                            className={classes.departmentAddSelectedMedia__deleteIcon}
+                        />
+                    </div>
+                )
+            }
+            <img src={`http://localhost:4040/${media.path}`} alt={media.name}/>
         </div>
     );
 };
