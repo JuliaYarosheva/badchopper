@@ -23,7 +23,10 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
         id,
         name,
         description,
-        address
+        address,
+        phone,
+        location,
+        imageId
     } = updateDepartmentDTO;
 
     return new Promise((resolve, reject) => {
@@ -39,8 +42,15 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
                         description,
                         address : {
                             city: address.city,
-                            street: address.street
-                        }
+                            street: address.street,
+                            number: address.number,
+                        },
+                        phone,
+                        location: {
+                            latitude: location.latitude,
+                            longitude: location.longitude
+                        },
+                        imageId
                     }
                 }
             )

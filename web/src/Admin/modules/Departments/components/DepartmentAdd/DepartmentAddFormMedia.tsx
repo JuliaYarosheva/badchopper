@@ -1,17 +1,18 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {FC, useEffect, useMemo, useState} from 'react';
 import {PaddingBox} from '../../../../baseComponents/PaddingBox/PaddingBox';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {getAllImages} from '../../../Media/api';
 import {MediaImagesType} from '../../../Media/store/types';
 import {DepartmentAddMedia} from './DepartmentAddMedia';
+import {DepartmentAddFormMediaType} from './types';
 
-const DepartmentAddFormMedia = (
+const DepartmentAddFormMedia: FC<DepartmentAddFormMediaType> = (
     {
         selectedMediaId,
         handleSelectMedia,
-        handleDeleteImage,
+        handleDeleteProcessedImage,
         hasSelectedMedia,
-        hasInitialValues
+        showDeleteButton
     }
 ) => {
     const [mediaData, setMediaData] = useState<MediaImagesType>([]);
@@ -38,11 +39,11 @@ const DepartmentAddFormMedia = (
                <DepartmentAddMedia
                    singleSelect
                    mediaData={mediaData}
-                   showDeleteButton={!hasInitialValues}
+                   showDeleteButton={showDeleteButton}
                    hasSelectedMedia={hasSelectedMedia}
                    selectedMedia={[selectedMedia]}
                    handleSelectMedia={handleSelectMedia}
-                   handleDeleteImage={handleDeleteImage}
+                   handleDeleteProcessedImage={handleDeleteProcessedImage}
                />
            </PaddingBox>
        </>

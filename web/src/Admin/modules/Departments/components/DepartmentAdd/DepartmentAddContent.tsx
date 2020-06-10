@@ -1,15 +1,20 @@
 import React, {useContext, useState, useRef, FC, useEffect} from 'react';
 import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLayout';
 import {DepartmentAddForm} from './DepartmentAddForm';
-import {addDepartmentHook} from './hooks';
+import {addDepartmentHook, editDepartmentHook} from './hooks';
 import {NavigationContext} from '../../../../adminComponents/Navigation/store';
 import {getNavigationList} from '../../../../adminComponents/Navigation/api';
 import {isNull, isNullOrUndefined} from '../../../../../utils';
 import {DepartmentAddContentType} from '../../types';
+import {DepartmentEditForm} from './DepartmentEditForm';
 
 const DepartmentAddContent: FC<DepartmentAddContentType> = (
     {
-        initialValues
+        editMode,
+        departmentId,
+        initialValues,
+        isDepartmentDetail,
+        onEditDepartmentSuccess
     }
 ) => {
     const {setNavigationList} = useContext(NavigationContext);
@@ -27,7 +32,7 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
         getNavigationList()
             .then(({ data }) => {
                 setNavigationList(data);
-                handleDeleteImage();
+                handleDeleteProcessedImage();
             });
     };
 
@@ -37,7 +42,7 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
         setHasSelectedMedia(true);
     };
 
-    const handleDeleteImage = () => {
+    const handleDeleteProcessedImage = () => {
         mediaIdRef.current = null;
         setSelectedMediaId(null);
         setHasSelectedMedia(true);
@@ -54,19 +59,50 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
         resetFormValues();
     };
 
-    const hasInitialValues = !isNullOrUndefined(initialValues);
+    const handleEditDepartment = (values) => {
+        if (isNull(mediaIdRef.current)) {
+            setHasSelectedMedia(false);
+
+            return;
+        }
+
+        editDepartmentHook(
+            {
+                ...values,
+                id: departmentId,
+                imageId: mediaIdRef.current
+            },
+            onEditDepartmentSuccess
+        );
+    };
 
     return (
-        <ContentLayout>
-            <DepartmentAddForm
-                initialValues={initialValues}
-                hasInitialValues={hasInitialValues}
-                selectedMediaId={selectedMediaId}
-                hasSelectedMedia={hasSelectedMedia}
-                handleDeleteImage={handleDeleteImage}
-                handleSelectMedia={handleSelectMedia}
-                handleAddDepartment={handleAddDepartment}
-            />
+        <ContentLayout hasMargin={!isDepartmentDetail}>
+            {
+                !isDepartmentDetail && (
+                    <DepartmentAddForm
+                        selectedMediaId={selectedMediaId}
+                        hasSelectedMedia={hasSelectedMedia}
+                        handleSelectMedia={handleSelectMedia}
+                        handleAddDepartment={handleAddDepartment}
+                        handleDeleteProcessedImage={handleDeleteProcessedImage}
+                    />
+                )
+            }
+            {
+                isDepartmentDetail && (
+                    <DepartmentEditForm
+                        editMode={editMode}
+                        initialValues={initialValues}
+                        selectedMediaId={selectedMediaId}
+                        hasSelectedMedia={hasSelectedMedia}
+                        handleSelectMedia={handleSelectMedia}
+                        isDepartmentDetail={isDepartmentDetail}
+                        handleEditDepartment={handleEditDepartment}
+                        handleDeleteProcessedImage={handleDeleteProcessedImage}
+                    />
+                )
+            }
         </ContentLayout>
     );
 };

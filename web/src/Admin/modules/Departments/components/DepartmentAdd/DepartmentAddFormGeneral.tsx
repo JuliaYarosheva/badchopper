@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {PaddingBox} from '../../../../baseComponents/PaddingBox/PaddingBox';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
 import {Field} from '../../../../baseComponents/Form';
 import {Textarea, Textbox} from '../../../../baseComponents/Form/Adapters';
 import FormLayout from '../../../../baseComponents/FormLayout';
+import {DepartmentAddFormGeneralType} from './types';
 
-const DepartmentAddFormGeneral = (
+const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
     {
-        hasInitialValues
+        editMode
     }
 ) => {
+
     return (
         <>
 			<PaddingBox hrSmall>
@@ -26,7 +28,7 @@ const DepartmentAddFormGeneral = (
                             name="name"
                             label="!!!Название филиала"
                             required
-                            previewMode={hasInitialValues}
+                            previewMode={!editMode}
                             validate={{
                                 required: true
                             }}
@@ -38,7 +40,7 @@ const DepartmentAddFormGeneral = (
                             name="description"
                             label="!!!Описание"
                             required
-                            previewMode={hasInitialValues}
+                            previewMode={!editMode}
                             validate={{
                                 required: true
                             }}
@@ -50,7 +52,7 @@ const DepartmentAddFormGeneral = (
                             name="city"
                             label="!!!Город"
                             required
-                            previewMode={hasInitialValues}
+                            previewMode={!editMode}
                             validate={{
                                 required: true
                             }}
@@ -67,7 +69,7 @@ const DepartmentAddFormGeneral = (
                                 name="street"
                                 label="!!!Улица"
                                 required
-                                previewMode={hasInitialValues}
+                                previewMode={!editMode}
                                 validate={{
                                     required: true
                                 }}
@@ -79,7 +81,7 @@ const DepartmentAddFormGeneral = (
                                 name="number"
                                 label="!!!Номер"
                                 required
-                                previewMode={hasInitialValues}
+                                previewMode={!editMode}
                                 validate={{
                                     required: true
                                 }}
@@ -92,7 +94,7 @@ const DepartmentAddFormGeneral = (
                             name="phone"
                             label="!!!Телефон"
                             required
-                            previewMode={hasInitialValues}
+                            previewMode={!editMode}
                             placeholder="+38_(000)_000_00_00"
                             validate={{
                                 required: true
@@ -113,7 +115,7 @@ const DepartmentAddFormGeneral = (
                                 name="latitude"
                                 label="!!!Широта"
                                 required
-                                previewMode={hasInitialValues}
+                                previewMode={!editMode}
                                 validate={{
                                     required: true
                                 }}
@@ -126,7 +128,7 @@ const DepartmentAddFormGeneral = (
                                 name="longitude"
                                 label="!!!Долгота"
                                 required
-                                previewMode={hasInitialValues}
+                                previewMode={!editMode}
                                 validate={{
                                     required: true
                                 }}
@@ -138,6 +140,10 @@ const DepartmentAddFormGeneral = (
             </FormLayout>
         </>
     );
+};
+
+DepartmentAddFormGeneral.defaultProps = {
+    editMode: true
 };
 
 export {DepartmentAddFormGeneral};

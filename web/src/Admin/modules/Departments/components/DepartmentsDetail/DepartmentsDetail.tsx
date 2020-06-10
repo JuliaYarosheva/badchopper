@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {useParams} from "react-router-dom";
 import {DepartmentsDetailHeader} from './DepartmentsDetailHeader';
 import {DepartmentsDetailContent} from './DepartmentsDetailContent';
-import {getDepartmentDetail} from '../../api';
+import {getDepartmentDetail as getDepartmentDetailAPI} from '../../api';
 import {PendingCloak} from '../../../../baseComponents/PendingCloak/PendingCloak';
 
 type DepartmentsDetailDataType = {
@@ -15,16 +15,19 @@ const DepartmentsDetail = () => {
     const [departmentData, setDepartmentData] = useState<DepartmentsDetailDataType>();
     const [pending, setPending] = useState(false);
 
-    useEffect(() => {
+    const getDepartmentDetail = useCallback(() => {
         setPending(true);
-        getDepartmentDetail(id)
+        getDepartmentDetailAPI(id)
             .then(({ data }) => {
                 setDepartmentData(data);
                 setPending(false);
             })
             .catch(error => console.log(error))
-
     }, [id]);
+
+    useEffect(() => {
+        getDepartmentDetail()
+    }, [getDepartmentDetail]);
 
     return (
         <>
@@ -40,7 +43,9 @@ const DepartmentsDetail = () => {
                            departmentData={departmentData}
                        />
                        <DepartmentsDetailContent
+                           departmentId={id}
                            departmentData={departmentData}
+                           getDepartmentDetail={getDepartmentDetail}
                        />
                    </>
                 )

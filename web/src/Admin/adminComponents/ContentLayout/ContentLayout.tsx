@@ -5,6 +5,7 @@ import ClassNames from 'classnames';
 
 const ContentLayout = (
     {
+        hasMargin,
         children,
         className: classNameFromProps
     }
@@ -16,7 +17,7 @@ const ContentLayout = (
 
     return (
         <MarginBox
-            normal
+            normal={hasMargin}
             className={componentClassName}
         >
             {children}
@@ -25,7 +26,8 @@ const ContentLayout = (
 };
 
 ContentLayout.defaultProps = {
-    className: ''
+    className: '',
+    hasMargin: true
 };
 
 export {ContentLayout};

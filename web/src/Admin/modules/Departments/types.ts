@@ -10,4 +10,8 @@ export type DepartmentAddContentType = {
         phone: string;
         imageId: string;
     };
+    departmentId?: string;
+    editMode?: boolean;
+    isDepartmentDetail?: boolean;
+    onEditDepartmentSuccess?: () => void;
 }

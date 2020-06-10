@@ -8,14 +8,14 @@ const DepartmentAddSelectedMedia = (
     {
         media,
         showDeleteButton,
-        handleDeleteImage
+        handleDeleteProcessedImage
     }
 ) => {
     return (
         <div className={classes.departmentAddSelectedMedia}>
             {
                 showDeleteButton && (
-                    <div onClick={handleDeleteImage}>
+                    <div onClick={handleDeleteProcessedImage}>
                         <Icon
                             icon={deleteCircleOutline}
                             className={classes.departmentAddSelectedMedia__deleteIcon}

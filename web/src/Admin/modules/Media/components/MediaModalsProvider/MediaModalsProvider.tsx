@@ -7,7 +7,7 @@ import {NotificationModal} from '../../../../baseComponents/NotificationModal/No
 export const MediaModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
 	const [isAddMediaModalOpen, setIsAddMediaModalOpen] = useState(false);
-	const [iisDeleteMediaModalOpen, setIsDeleteMediaModalOpen] = useState(false);
+	const [isDeleteMediaModalOpen, setIsDeleteMediaModalOpen] = useState(false);
 
 	const modalState = {
 		[MODALS.ADD_MEDIA_MODAL]: setIsAddMediaModalOpen,
@@ -43,7 +43,7 @@ export const MediaModalsProvider = ({ children }) => {
             />
             <NotificationModal
                 modalData={modalData}
-                isOpen={iisDeleteMediaModalOpen}
+                isOpen={isDeleteMediaModalOpen}
                 handleClose={() => closeModal(MODALS.DELETE_MEDIA_MODAL)}
             />
 		</>

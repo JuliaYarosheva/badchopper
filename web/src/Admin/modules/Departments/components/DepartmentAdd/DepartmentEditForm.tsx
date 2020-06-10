@@ -6,24 +6,31 @@ import {GridLayoutRow} from '../../../../baseComponents/GridLayout';
 import {DepartmentAddFormGeneral} from './DepartmentAddFormGeneral';
 import {DepartmentAddFormMedia} from './DepartmentAddFormMedia';
 
-const DepartmentAddForm = (
+const DepartmentEditForm = (
     {
         selectedMediaId,
         handleSelectMedia,
-        handleAddDepartment,
+        handleEditDepartment,
         handleDeleteProcessedImage,
         hasSelectedMedia,
+        initialValues,
+        editMode,
+        isDepartmentDetail
     }
 ) => {
     return (
         <Form
-            onSubmit={handleAddDepartment}
-            name={FORMS.ADD_DEPARTMENT_FORM}
+            initialValues={initialValues}
+            onSubmit={handleEditDepartment}
+            name={FORMS.EDIT_DEPARTMENT_FORM}
         >
             <GridLayout>
                 <GridLayoutRow grid="6-6">
-                    <DepartmentAddFormGeneral/>
+                    <DepartmentAddFormGeneral
+                        editMode={editMode}
+                    />
                     <DepartmentAddFormMedia
+                        showDeleteButton={isDepartmentDetail && editMode}
                         hasSelectedMedia={hasSelectedMedia}
                         selectedMediaId={selectedMediaId}
                         handleDeleteProcessedImage={handleDeleteProcessedImage}
@@ -35,10 +42,4 @@ const DepartmentAddForm = (
     );
 };
 
-DepartmentAddForm.defaultProps = {
-    editMode: false,
-    hasInitialValues: false,
-    initialValues: {}
-};
-
-export {DepartmentAddForm};
+export {DepartmentEditForm};

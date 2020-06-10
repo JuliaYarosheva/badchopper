@@ -1,7 +1,6 @@
-import {addDepartment} from '../../api';
+import {addDepartment, editDepartment} from '../../api';
 
-export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
-
+const normalizeRequestData = (values) => {
     const {
         city,
         street,
@@ -11,7 +10,7 @@ export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
         ...rest
     } = values;
 
-    const requestData = {
+    return {
         ...rest,
         address: {
             street: values.street,
@@ -23,9 +22,22 @@ export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
             longitude: values.longitude
         }
     };
+};
+
+export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
+    const requestData = normalizeRequestData(values);
 
     return addDepartment(requestData)
         .then(() => {
             onAddDepartmentSuccess();
+        })
+};
+
+export const editDepartmentHook = (values, onEditDepartmentSuccess) => {
+    const requestData = normalizeRequestData(values);
+
+    return editDepartment(requestData)
+        .then(() => {
+            onEditDepartmentSuccess();
         })
 };

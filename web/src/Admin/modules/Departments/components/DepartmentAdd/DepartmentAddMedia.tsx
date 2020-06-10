@@ -11,7 +11,7 @@ const DepartmentAddMedia = (
         selectedMedia,
         hasSelectedMedia,
         handleSelectMedia,
-        handleDeleteImage,
+        handleDeleteProcessedImage,
         showDeleteButton
     }
 ) => {
@@ -44,7 +44,7 @@ const DepartmentAddMedia = (
                                 media={media}
                                 key={media._id}
                                 showDeleteButton={showDeleteButton}
-                                handleDeleteImage={handleDeleteImage}
+                                handleDeleteProcessedImage={handleDeleteProcessedImage}
                             />
                         );
                     })

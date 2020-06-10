@@ -5,6 +5,7 @@ type DepartmentDTOType = {
     address: {
         city: string;
         street: string;
+        number: string;
     },
     phone: string;
     location: {
