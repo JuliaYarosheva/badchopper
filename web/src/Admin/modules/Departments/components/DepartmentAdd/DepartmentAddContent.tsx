@@ -1,7 +1,7 @@
 import React, {useContext, useState, useRef, FC, useEffect} from 'react';
 import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLayout';
 import {DepartmentAddForm} from './DepartmentAddForm';
-import {addDepartmentHook, editDepartmentHook} from './hooks';
+import {addDepartmentHook, editDepartmentHook} from './api';
 import {NavigationContext} from '../../../../adminComponents/Navigation/store';
 import {getNavigationList} from '../../../../adminComponents/Navigation/api';
 import {isNull, isNullOrUndefined} from '../../../../../utils';
