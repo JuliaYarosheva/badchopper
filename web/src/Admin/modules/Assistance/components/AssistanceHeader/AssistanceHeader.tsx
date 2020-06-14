@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import ContentHeader, {ContentHeaderLeft, ContentHeaderRight} from '../../../../adminComponents/ContentHeader';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {Button} from '../../../../baseComponents/Button/Button';
-import {MediaModalsContext, MODALS} from '../MediaModalsProvider/const';
+import {AssistanceModalsContext, MODALS} from '../AssistanceModalsProvider/const';
 
-const MediaListHeader = () => {
-    const { openModal } = useContext(MediaModalsContext);
+const AssistanceHeader = () => {
+    const { openModal } = useContext(AssistanceModalsContext);
 
     const actionButtonHandler = () => {
         if (!!openModal) {
-            openModal(MODALS.ADD_MEDIA_MODAL);
+            openModal(MODALS.ADD_ASSISTANCE_MODAL);
         }
     };
 
@@ -19,15 +19,15 @@ const MediaListHeader = () => {
                 <Typography
                     variant="24"
                 >
-                    !!Медиа
+                    !!Услуги
                 </Typography>
             </ContentHeaderLeft>
             <ContentHeaderRight>
                 <Button
-                    floatRight
                     type="primary"
                     transparent
-                    label="!!Добавить свiтлину"
+                    label="!!Добавить услугу"
+                    floatRight
                     actionHandler={actionButtonHandler}
                 />
             </ContentHeaderRight>
@@ -35,4 +35,4 @@ const MediaListHeader = () => {
     );
 };
 
-export {MediaListHeader};
+export {AssistanceHeader};

@@ -13,6 +13,7 @@ const Button: FC<ButtonType> = (
 		type,
 		icon,
 		label,
+        floatRight,
 		noBorder,
 		className,
 		isPending,
@@ -53,6 +54,7 @@ const Button: FC<ButtonType> = (
 			[classes.button_onlyIcon]: !label,
 
 			[classes.button_noBorder]: noBorder,
+			[classes.button_floatRight]: floatRight,
 		},
 		className
 	);
@@ -113,6 +115,7 @@ Button.defaultProps = {
 	type: 'secondary',
 	isPending: false,
 	noBorder: false,
+    floatRight: false,
 	actionName: '',
 	transparent: false,
 	actionHandler: () => {}

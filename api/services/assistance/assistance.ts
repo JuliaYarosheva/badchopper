@@ -6,7 +6,7 @@ import {
 } from '../../models/assistance/assistance'
 
 import {
-    assistanceDTOType,
+    AssistanceDTOType,
 } from "../../types/assistanceTypes";
 
 import {
@@ -19,7 +19,7 @@ import { normalizeAssistanceData } from "../../utils/assistance/normalizeAssista
 
 const addAssistanceService = (assistanceDTO, client) => {
     if (assistanceDTO.name.length !== 0) {
-        const normalizeAssistanceDTO: assistanceDTOType = normalizeAssistanceData(assistanceDTO);
+        const normalizeAssistanceDTO: AssistanceDTOType = normalizeAssistanceData(assistanceDTO);
 
         return addAssistanceModel(normalizeAssistanceDTO, client)
     }
@@ -31,7 +31,7 @@ const getAllAssistanceService = (client) => {
 
 const updateAssistanceService = (updateAssistanceDTO, client) => {
     if (updateAssistanceDTO.id.length !== 0) {
-        const normalizeAssistanceDTO: assistanceDTOType = normalizeAssistanceData(updateAssistanceDTO);
+        const normalizeAssistanceDTO: AssistanceDTOType = normalizeAssistanceData(updateAssistanceDTO);
 
         return updateAssistanceModel(normalizeAssistanceDTO, client)
             .then((status: updateDocumentResponseStatusType) => {

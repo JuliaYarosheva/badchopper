@@ -27,7 +27,10 @@ const GridLayoutRow = (
 		const gridItemsStyles = getGridItemsStyles(gridItems);
 
 		return (
-			<div className={componentClassName} style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}>
+			<div
+                className={componentClassName}
+                style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}
+            >
 				{children.map((child, index) => {
 					const key = getUniqueKey('griditem', index);
 

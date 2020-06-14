@@ -7,6 +7,7 @@ import {AdminAppContext} from './store/AdminAppContext/const';
 import {AdminAppContextProvider} from './store/AdminAppContext/AdminAppContext';
 import {AdminAppFormContextProvider} from './store/AdminAppFormContext/AdminAppFormContext';
 import {NavigationContextProvider} from '../adminComponents/Navigation/store/NavigationContext';
+import {Notification} from '../baseComponents/Notification/Notification';
 
 const App = () => {
     const { showOverlayCloak, handleOverlayClose } = useContext(AdminAppContext);
@@ -19,6 +20,7 @@ const App = () => {
                 show={showOverlayCloak}
                 handleOverlayClose={handleOverlayClose}
             />
+            <Notification/>
         </div>
     );
 };

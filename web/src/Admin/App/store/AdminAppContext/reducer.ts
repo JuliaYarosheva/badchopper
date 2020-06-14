@@ -1,6 +1,5 @@
 import {
     actionLogger,
-    getUniqueId,
     removeArrayElementById,
     removeObjectProperty
 } from '../../../../utils';
@@ -17,14 +16,9 @@ export const reducer = (state, payload) => {
 
     switch (payload.type) {
         case SHOW_NOTIFICATION:
-            const notification = {
-                id: getUniqueId(),
-                ...payload.notification
-            };
-
             return {
                 ...state,
-                notifications: [notification, ...state.notifications]
+                notifications: [{...payload.notification}, ...state.notifications]
             };
         case REMOVE_NOTIFICATION:
             return {

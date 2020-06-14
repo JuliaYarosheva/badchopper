@@ -6,8 +6,7 @@ import classes from './styles/index.module.scss';
 import { AdminAppContext } from '../../App/store/AdminAppContext/const';
 
 const NotificationContentWrapper = () => {
-    //@ts-ignore
-	const { notifications, removeNotification } = useContext(AdminAppContext);
+	const { notifications } = useContext(AdminAppContext);
 
 	return (
 		<TransitionGroup className={classes.notificationContentWrapper}>
@@ -31,7 +30,6 @@ const NotificationContentWrapper = () => {
 									type={notification.type}
 									message={notification.message}
 									duration={notification.duration}
-									removeNotification={removeNotification}
 								/>
 							</CSSTransition>
 						);

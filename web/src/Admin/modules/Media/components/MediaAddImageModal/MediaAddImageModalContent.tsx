@@ -52,7 +52,7 @@ const MediaAddImageModalContent = (
     return (
         <>
             <ModalHeader
-                label="Новый филиал"
+                label="!!Добавить изображения"
                 handleClose={handleClose}
             />
             <ModalContent

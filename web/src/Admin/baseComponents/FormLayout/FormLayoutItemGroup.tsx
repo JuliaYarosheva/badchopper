@@ -13,7 +13,8 @@ const FormLayoutItemGroup = (
         inline,
         grid,
         gridColumn,
-        label
+        label,
+        singleItem
     }
 ) => {
     const componentClassName = ClassNames(
@@ -41,7 +42,7 @@ const FormLayoutItemGroup = (
                             }
                             <GridLayout>
                                 <GridLayoutRow gridColumn={gridColumn} grid={grid}>
-                                    {children}
+                                    {singleItem ? [children] : children}
                                 </GridLayoutRow>
                             </GridLayout>
                         </>
@@ -52,7 +53,8 @@ const FormLayoutItemGroup = (
 };
 
 FormLayoutItemGroup.defaultProps = {
-    inline: false
+    inline: false,
+    singleItem: false
 };
 
 FormLayoutItemGroup.propTypes = {
@@ -60,6 +62,7 @@ FormLayoutItemGroup.propTypes = {
     label: PropTypes.string,
     gridColumn: PropTypes.number,
 	inline: PropTypes.bool,
+    singleItem: PropTypes.bool,
 	children: PropTypes.oneOfType([
 		PropTypes.object,
 		PropTypes.array

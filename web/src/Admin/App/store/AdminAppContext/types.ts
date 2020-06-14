@@ -5,19 +5,23 @@ type AsyncReturnType<T extends (...args: any) => any> =
 
 type uploadMedia = AsyncReturnType<() => Promise<any>>
 
+type NotificationType = {
+    id: string;
+    type?: string;
+    duration?: number;
+    message: string;
+}
+
 export type AdminAppContextType = {
     showOverlayCloak?: boolean;
     handleOverlayClose?: () => void;
+    showNotification?: (notification: NotificationType) => void;
+    removeNotification?: (id) => void;
     setHandleOverlayClose?: any;
     handleShowOverlayCloak: (show: boolean) => void;
     addUploaderToGlobalContext: (uploader: object) => void;
     removeUploaderFromGlobalContext: (uploader: string) => void;
-    notifications: {
-        id: string;
-        type: string;
-        duration: number;
-        message: string;
-    }[];
+    notifications: NotificationType[];
     upLoaders: {
         [name: string]: {
             upload: uploadMedia

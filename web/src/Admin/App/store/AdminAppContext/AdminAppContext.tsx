@@ -3,7 +3,9 @@ import React, {useState, useReducer} from 'react';
 import {
     AdminAppContext,
     ADD_UPLOADER_TO_GLOBAL_CONTEXT,
-    REMOVE_UPLOADER_FROM_GLOBAL_CONTEXT
+    REMOVE_UPLOADER_FROM_GLOBAL_CONTEXT,
+    SHOW_NOTIFICATION,
+    REMOVE_NOTIFICATION
 } from './const';
 import {AdminAppContextType} from './types';
 import { reducer } from './reducer';
@@ -34,9 +36,25 @@ export const AdminAppContextProvider = ({children}) => {
         });
     };
 
+    const showNotification = (notification) => {
+        dispatch({
+            type: SHOW_NOTIFICATION,
+            notification
+        });
+    };
+
+    const removeNotification = (notificationId) => {
+        dispatch({
+            type: REMOVE_NOTIFICATION,
+            notificationId
+        });
+    };
+
     const contextValues: AdminAppContextType = {
         showOverlayCloak,
         handleOverlayClose,
+        showNotification,
+        removeNotification,
         setHandleOverlayClose,
         handleShowOverlayCloak,
         addUploaderToGlobalContext,

@@ -6,7 +6,9 @@ const AdminAppContextDefaultValues: AdminAppContextType = {
     removeUploaderFromGlobalContext: () => {},
     addUploaderToGlobalContext: () => {},
     notifications: [],
-    upLoaders: {}
+    upLoaders: {},
+    showNotification: () => {},
+    removeNotification: () => {},
 };
 
 export const SHOW_NOTIFICATION = 'SHOW_NOTIFICATION';

@@ -21,7 +21,7 @@ const NotificationModalContent = (
 	} = modalData;
 
 	const handleSubmit = () => {
-		handleSubmitFromModalData()
+		return handleSubmitFromModalData()
 			.then(() => handleClose());
 	};
 
