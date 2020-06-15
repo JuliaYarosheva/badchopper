@@ -1,22 +1,23 @@
-import { AssistanceDTOType } from "../../types/assistanceTypes";
-import CONSTS from "./consts";
-import { documentIdType } from "../../types/general";
-import { ObjectID } from "bson";
+import CONST from "./const";
+import { StaffDTOType } from "../../types/staff";
+import {ObjectID} from 'bson';
+import {documentIdType} from '../../types/general';
 
-const addAssistanceModel = (assistanceDTO: AssistanceDTOType, client) => {
+export const addStaffModel = (staffDTO: StaffDTOType, client) => {
+    console.log(staffDTO);
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
-            .insertOne(assistanceDTO)
+            .collection(CONST.BASE_COLLECTION)
+            .insertOne(staffDTO)
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
 };
 
-const getAllAssistanceModel = (client) => {
+export const getAllStuffModel = (client) => {
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .find()
             .toArray()
             .then(res => resolve(res))
@@ -24,17 +25,19 @@ const getAllAssistanceModel = (client) => {
     });
 };
 
-const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) => {
+export const updateStuffModel = (updateStaffDTO: StaffDTOType, client) => {
     const {
         id,
         name,
-        description,
-        price
-    } = updateAssistanceDTO;
+        position,
+        imageId,
+        instagramUrl,
+        facebookUrl
+    } = updateStaffDTO;
 
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .findOneAndUpdate(
                 {
                     _id: new ObjectID(id)
@@ -42,8 +45,10 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
                 {
                     $set: {
                         name,
-                        description,
-                        price
+                        position,
+                        imageId,
+                        instagramUrl,
+                        facebookUrl
                     }
                 },
                 {returnOriginal: false}
@@ -53,19 +58,12 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
     });
 };
 
-const deleteAssistanceModel = (deleteAssistanceDTO: documentIdType, client) => {
+export const deleteStuffModel = (deleteAssistanceDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .findOneAndDelete({_id: new ObjectID(deleteAssistanceDTO.id)})
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
-};
-
-export {
-    addAssistanceModel,
-    getAllAssistanceModel,
-    deleteAssistanceModel,
-    updateAssistanceModel
 };
