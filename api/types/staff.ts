@@ -1,6 +1,8 @@
 export type StaffDTOType = {
     id?: string;
     name: string;
+    surname: string;
+    patronymic: string;
     position: string;
     imageId: string;
     instagramUrl?: string;
@@ -8,12 +10,5 @@ export type StaffDTOType = {
 }
 
 export type StaffResponseType = {
-    ops: {
-        name: string;
-        _id: string;
-        position: string;
-        imageId: string;
-        instagramUrl: string;
-        facebookUrl: string;
-    }[]
+    ops: StaffDTOType[]
 }

@@ -1,16 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {AdminAppFormContext} from '../../../../App/store/AdminAppFormContext/consts';
-import {AssistanceContext} from '../../../Assistance/store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
-import {addAssistance} from '../../../Assistance/api';
 import {getUniqueId} from '../../../../../utils';
 import {Button} from '../../../../baseComponents/Button/Button';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
-import Form, {Field} from '../../../../baseComponents/Form';
-import {FORMS} from '../../const';
-import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
-import {Textarea, Textbox} from '../../../../baseComponents/Form/Adapters';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
+import {getAllImages} from '../../../Media/api';
+import {addStaff} from '../../api';
+import {StaffContext} from '../../store';
+import {AddStaffModalForm} from './AddStaffModalForm';
 
 const AddStaffModalContent = (
     {
@@ -20,19 +18,31 @@ const AddStaffModalContent = (
 ) => {
     const {isBarberLayout} = modalData;
     const {forms} = useContext(AdminAppFormContext);
-    const {setAssistance} = useContext(AssistanceContext);
+    const {setAllStaff} = useContext(StaffContext);
     const {showNotification} = useContext(AdminAppContext);
+    const [mediaData, setMediaData] = useState([]);
 
-    const handleAddAssistance = (values) => {
-        addAssistance(values)
+    useEffect(() => {
+        getAllImages()
+            .then(({data}) => setMediaData(data))
+        // eslint-disable-next-line
+    }, []);
+
+    const handleAddStaff = (values) => {
+
+        addStaff(values)
             .then(({data}) => {
-                setAssistance(data);
+                setAllStaff(data);
                 handleClose();
+
+                const notificationMessage = isBarberLayout
+                    ? `!!Мастера ${data[0].name} ${data[0].surname} добавлен`
+                    : `!!Мастера ${data[0].name} ${data[0].surname} добавлен`;
 
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: '!! Услуга добавлена'
+                        message: notificationMessage
                     })
                 }
             })
@@ -56,6 +66,15 @@ const AddStaffModalContent = (
 
     const modalLabel = isBarberLayout ? "!!Добавить мастера" : "!!Добавить менеджера";
 
+    const mediaModalData = {
+        modalTitle: "!!Медиа файлы",
+        rightButtonLabel: "!!Выбрать",
+        mediaData,
+        singleSelect: true
+    };
+
+    const positionDropDownValue = isBarberLayout ? 1 : 2;
+
     return (
         <>
             <ModalHeader
@@ -63,57 +82,11 @@ const AddStaffModalContent = (
                 handleClose={handleClose}
             />
             <ModalContent>
-                <Form
-                    onSubmit={handleAddAssistance}
-                    name={FORMS.ADD_STAFF_FORM}
-                >
-                    <FormLayout>
-                        <FormLayoutItemGroup>
-                            <FormLayoutItem>
-                                <Field
-                                    component={Textbox}
-                                    name="name"
-                                    label="!!!название услуги"
-                                    required
-                                    validate={{
-                                        required: true
-                                    }}
-                                    placeholder="название услуги"
-                                />
-                            </FormLayoutItem>
-                            <FormLayoutItem>
-                                <Field
-                                    component={Textarea}
-                                    name="description"
-                                    label="!!!Описание"
-                                    required
-                                    validate={{
-                                        required: true
-                                    }}
-                                    placeholder="Описание"
-                                />
-                            </FormLayoutItem>
-                            <FormLayoutItemGroup
-                                inline
-                                grid="4-8"
-                                singleItem
-                            >
-                                <FormLayoutItem>
-                                    <Field
-                                        component={Textbox}
-                                        name="price"
-                                        label="!!!Стоимость"
-                                        required
-                                        validate={{
-                                            required: true
-                                        }}
-                                        placeholder="00.00"
-                                    />
-                                </FormLayoutItem>
-                            </FormLayoutItemGroup>
-                        </FormLayoutItemGroup>
-                    </FormLayout>
-                </Form>
+               <AddStaffModalForm
+                   handleAddStaff={handleAddStaff}
+                   mediaModalData={mediaModalData}
+                   positionDropDownValue={positionDropDownValue}
+               />
             </ModalContent>
             <ModalFooter>
                 <ButtonGroup

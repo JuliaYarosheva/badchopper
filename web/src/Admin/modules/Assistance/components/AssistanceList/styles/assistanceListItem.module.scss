@@ -7,6 +7,11 @@
 	cursor: pointer;
 }
 
+.assistanceList__header {
+	border-bottom: 2px solid $disabled;
+	padding-bottom: 8px;
+}
+
 .assistanceListItem:last-child {
 	border-bottom: none;
 }
