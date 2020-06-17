@@ -16,3 +16,11 @@ export const deleteStaff = (data) => {
 export const getAllStaff = () => {
     return GET(ENDPOINTS.GET_ALL_STAFF)
 };
+
+export const getAllMangerStaff = () => {
+    return GET(ENDPOINTS.GET_ALL_MANAGER_STAFF)
+};
+
+export const getAllBarberStaff = () => {
+    return GET(ENDPOINTS.GET_ALL_BARBER_STAFF)
+};

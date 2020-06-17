@@ -1,5 +1,6 @@
 import React from 'react';
 import {StaffListHeader} from '../StaffListHeader/StaffListHeader';
+import {StaffList} from '../StaffList/StaffList';
 
 const StaffManagers = () => {
     return (
@@ -8,6 +9,7 @@ const StaffManagers = () => {
                 headerLabel="!!Менеджеры"
                 isManagerLayout
             />
+            <StaffList />
         </>
     );
 };

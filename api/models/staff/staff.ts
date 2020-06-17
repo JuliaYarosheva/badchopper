@@ -25,6 +25,28 @@ export const getAllStuffModel = (client) => {
     });
 };
 
+export const getAllManagerStuffModel = (client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONST.BASE_COLLECTION)
+            .find({position: 2})
+            .toArray()
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
+export const getAllBarberStuffModel = (client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONST.BASE_COLLECTION)
+            .find({position: 1})
+            .toArray()
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
 export const updateStuffModel = (updateStaffDTO: StaffDTOType, client) => {
     const {
         id,

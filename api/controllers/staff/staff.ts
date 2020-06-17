@@ -4,7 +4,9 @@ import {
     addStaffService,
     getAllStuffService,
     updateStuffService,
-    deleteStaffService
+    deleteStaffService,
+    getAllManagerStuffService,
+    getAllBarberStuffService,
 } from '../../services/staff/staff';
 import CONST from "./const"
 import {StaffResponseType} from '../../types/staff';
@@ -28,6 +30,34 @@ export default (app: Application, client) => {
 
     serviceRouter.get(CONST.GET_ALL_STAFF, (req: Request, res: Response) => {
         getAllStuffService(client)
+            .then((status) => {
+                return res
+                    .status(200)
+                    .send(status);
+            })
+            .catch(() => {
+                return res
+                    .status(500)
+                    .send("error occur");
+            });
+    });
+
+    serviceRouter.get(CONST.GET_ALL_MANAGER_STAFF, (req: Request, res: Response) => {
+        getAllManagerStuffService(client)
+            .then((status) => {
+                return res
+                    .status(200)
+                    .send(status);
+            })
+            .catch(() => {
+                return res
+                    .status(500)
+                    .send("error occur");
+            });
+    });
+
+    serviceRouter.get(CONST.GET_ALL_BARBER_STAFF, (req: Request, res: Response) => {
+        getAllBarberStuffService(client)
             .then((status) => {
                 return res
                     .status(200)

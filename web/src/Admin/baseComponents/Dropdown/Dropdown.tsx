@@ -51,7 +51,7 @@ const Dropdown = (
 
 		onFieldFocus(!open);
 		setOpen(!open);
-	}, [open, onDropdownClick, onFieldFocus]);
+	}, [open, onDropdownClick, onFieldFocus, disabled]);
 
 	const onItemSelect = useCallback((id) => {
 		const selectedItem = items.find(i => i.id === id);

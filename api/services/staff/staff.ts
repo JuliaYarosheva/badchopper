@@ -3,7 +3,9 @@ import {
     addStaffModel,
     getAllStuffModel,
     updateStuffModel,
-    deleteStuffModel
+    deleteStuffModel,
+    getAllManagerStuffModel,
+    getAllBarberStuffModel,
 } from '../../models/staff/staff';
 import {deleteDocumentResponseStatusType, documentIdType, updateDocumentResponseStatusType} from '../../types/general';
 
@@ -15,6 +17,14 @@ export const addStaffService = (assistanceDTO: StaffDTOType, client) => {
 
 export const getAllStuffService = (client) => {
     return getAllStuffModel(client)
+};
+
+export const getAllManagerStuffService = (client) => {
+    return getAllManagerStuffModel(client)
+};
+
+export const getAllBarberStuffService = (client) => {
+    return getAllBarberStuffModel(client)
 };
 
 export const updateStuffService = (updateAssistanceDTO, client) => {

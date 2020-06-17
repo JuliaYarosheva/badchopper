@@ -1,14 +1,14 @@
-import {SET_ALL_STAFF} from './const';
+import {SET_STAFF} from './const';
 
 export default (dispatch) => {
-    const setAllDepartments = (departmentsList) => {
+    const setAllStaff = (staffList) => {
         dispatch({
-            type: SET_ALL_STAFF,
-            departmentsList
+            type: SET_STAFF,
+            staffList
         });
     };
 
     return {
-        setAllDepartments
+        setAllStaff
     };
 };

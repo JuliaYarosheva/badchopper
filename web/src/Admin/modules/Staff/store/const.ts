@@ -6,4 +6,4 @@ export const initialState = {
     setAllStaff: () => {}
 };
 export const StaffContext = createContext<StaffContextType>(initialState);
-export const SET_ALL_STAFF = 'SET_ALL_STAFF';
+export const SET_STAFF = 'SET_STAFF';
