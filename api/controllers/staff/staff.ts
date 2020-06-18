@@ -9,17 +9,17 @@ import {
     getAllBarberStuffService,
 } from '../../services/staff/staff';
 import CONST from "./const"
-import {StaffResponseType} from '../../types/staff';
+import {StaffItemDTOType} from '../../types/staff';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
     serviceRouter.post(CONST.ADD_STAFF, (req: Request, res: Response) => {
         addStaffService(req.body, client)
-            .then((status: StaffResponseType) => {
+            .then((status: StaffItemDTOType) => {
                 return res
                     .status(200)
-                    .send(status.ops);
+                    .send(status);
             })
             .catch(() => {
                 return res

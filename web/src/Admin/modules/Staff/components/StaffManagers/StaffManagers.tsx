@@ -7,9 +7,9 @@ const StaffManagers = () => {
         <>
             <StaffListHeader
                 headerLabel="!!Менеджеры"
-                isManagerLayout
+                isBarberLayout={false}
             />
-            <StaffList />
+            <StaffList isBarberLayout={false} />
         </>
     );
 };

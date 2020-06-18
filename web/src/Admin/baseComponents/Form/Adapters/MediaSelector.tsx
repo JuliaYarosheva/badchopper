@@ -20,29 +20,11 @@ class MediaSelector extends Component<MediaSelectorType, {}> {
     static defaultProps: any;
 
     render () {
-        const {
-            value,
-            previewMode
-        } = this.props;
-
         return (
-                <>
-                    {
-                        !previewMode && (
-                            //@ts-ignore
-                            <MediaSelectorComponent
-                                {...this.props}
-                            />
-                        )
-                    }
-                    {
-                        previewMode && (
-                            <PreviewFiled
-                                value={value}
-                            />
-                        )
-                    }
-                </>
+            //@ts-ignore
+            <MediaSelectorComponent
+                {...this.props}
+            />
         );
     }
 }

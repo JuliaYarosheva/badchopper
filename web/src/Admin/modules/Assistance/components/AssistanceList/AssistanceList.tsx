@@ -82,16 +82,20 @@ const AssistanceList = () => {
     return (
         <ContentLayout>
             <GridLayout>
-                <GridLayoutRow
-                    alignItems="center"
-                    gridColumn={24}
-                    grid="8-9-7"
-                    className={classes.assistanceList__header}
-                >
-                    <div>!!название</div>
-                    <div>!!описание</div>
-                    <div>!!цена</div>
-                </GridLayoutRow>
+                {
+                    hasAssistance && (
+                        <GridLayoutRow
+                            alignItems="center"
+                            gridColumn={24}
+                            grid="8-9-7"
+                            className={classes.assistanceList__header}
+                        >
+                            <div>!!название</div>
+                            <div>!!описание</div>
+                            <div>!!цена</div>
+                        </GridLayoutRow>
+                    )
+                }
                 {
                     hasAssistance && assistance.map(item => {
                         return (

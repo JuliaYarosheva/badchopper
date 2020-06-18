@@ -1,9 +1,9 @@
 import CONST from "./const";
-import { StaffDTOType } from "../../types/staff";
+import { StaffItemDTOType } from "../../types/staff";
 import {ObjectID} from 'bson';
 import {documentIdType} from '../../types/general';
 
-export const addStaffModel = (staffDTO: StaffDTOType, client) => {
+export const addStaffModel = (staffDTO: StaffItemDTOType, client) => {
     console.log(staffDTO);
     return new Promise((resolve, reject) => {
         client
@@ -47,14 +47,17 @@ export const getAllBarberStuffModel = (client) => {
     });
 };
 
-export const updateStuffModel = (updateStaffDTO: StaffDTOType, client) => {
+export const updateStuffModel = (updateStaffDTO: StaffItemDTOType, client) => {
     const {
         id,
         name,
         position,
         imageId,
         instagramUrl,
-        facebookUrl
+        facebookUrl,
+        description,
+        patronymic,
+        surname
     } = updateStaffDTO;
 
     return new Promise((resolve, reject) => {
@@ -67,10 +70,13 @@ export const updateStuffModel = (updateStaffDTO: StaffDTOType, client) => {
                 {
                     $set: {
                         name,
-                        position,
                         imageId,
+                        position,
+                        facebookUrl,
                         instagramUrl,
-                        facebookUrl
+                        description,
+                        patronymic,
+                        surname
                     }
                 },
                 {returnOriginal: false}

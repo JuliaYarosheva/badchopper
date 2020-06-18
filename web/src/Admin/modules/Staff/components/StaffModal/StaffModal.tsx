@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import Modal from '../../../../baseComponents/Modal';
-import {AddStaffModalContent} from './AddStaffModalContent';
+import {StaffModalModalContent} from './StaffModalModalContent';
 import {ModalType} from '../../../../../types';
 
-const AddStaffModal: FC<ModalType> = (
+const StaffModal: FC<ModalType> = (
     {
         isOpen,
         modalData,
@@ -16,7 +16,7 @@ const AddStaffModal: FC<ModalType> = (
             handleClose={handleClose}
             render={renderData => {
                 return (
-                    <AddStaffModalContent
+                    <StaffModalModalContent
                         {...renderData}
                         modalData={modalData}
                     />
@@ -26,4 +26,4 @@ const AddStaffModal: FC<ModalType> = (
     );
 };
 
-export {AddStaffModal};
+export {StaffModal};

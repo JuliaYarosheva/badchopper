@@ -8,7 +8,8 @@ export const ENDPOINTS = {
 };
 
 export const FORMS = {
-  ADD_STAFF_FORM: 'ADD_STAFF_FORM'
+  ADD_STAFF_FORM: 'ADD_STAFF_FORM',
+  EDIT_STAFF_FORM: 'EDIT_STAFF_FORM',
 };
 
 export const positionDropDownItems = [

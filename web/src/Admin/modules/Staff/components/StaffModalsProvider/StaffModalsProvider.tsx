@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { MODALS, StaffModalsContext } from './const';
 import {NotificationModal} from '../../../../baseComponents/NotificationModal/NotificationModal';
-import {AddStaffModal} from '../AddStaffModal/AddStaffModal';
+import {StaffModal} from '../StaffModal/StaffModal';
 
 export const StaffModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
@@ -11,7 +11,7 @@ export const StaffModalsProvider = ({ children }) => {
 
 	const modalState = {
 		[MODALS.DELETE_STAFF_MODAL]: setIsDeleteStaffModalOpen,
-		[MODALS.ADD_STAFF_MODAL]: setIsAddStaffModalOpen,
+		[MODALS.STAFF_MODAL]: setIsAddStaffModalOpen,
 	};
 
 	const openModal = (modalName, data) => {
@@ -41,10 +41,10 @@ export const StaffModalsProvider = ({ children }) => {
                 isOpen={isDeleteStaffModalOpen}
                 handleClose={() => closeModal(MODALS.DELETE_STAFF_MODAL)}
             />
-            <AddStaffModal
+            <StaffModal
                 modalData={modalData}
                 isOpen={isAddStaffModalOpen}
-                handleClose={() => closeModal(MODALS.ADD_STAFF_MODAL)}
+                handleClose={() => closeModal(MODALS.STAFF_MODAL)}
             />
 		</>
 	);

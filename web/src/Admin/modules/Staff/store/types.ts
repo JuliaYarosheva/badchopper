@@ -11,6 +11,9 @@ type StaffItem = {
 };
 
 export type StaffContextType = {
-    staffList: StaffItem[],
-    setAllStaff: ([]) => void
+    staffList: StaffItem[];
+    setAllStaff: ([]) => void;
+    updateStaff: ([]) => void;
+    setStaff: ([]) => void;
+    removeStaff: ([]) => void;
 };

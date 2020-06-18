@@ -7,8 +7,7 @@ import {StaffModalsContext, MODALS} from '../StaffModalsProvider/const';
 const StaffListHeader = (
     {
         headerLabel,
-        isBarberLayout,
-        isManagerLayout
+        isBarberLayout
     }
 ) => {
     const { openModal } = useContext(StaffModalsContext);
@@ -16,9 +15,11 @@ const StaffListHeader = (
     const actionButtonHandler = () => {
         if (!!openModal) {
             openModal(
-                MODALS.ADD_STAFF_MODAL,
+                MODALS.STAFF_MODAL,
                 {
-                    isBarberLayout
+                    isBarberLayout,
+                    isEditMode: false,
+                    iPreviewMode: false,
                 }
             );
         }
@@ -49,8 +50,7 @@ const StaffListHeader = (
 };
 
 StaffListHeader.defaultProps = {
-    isBarberLayout: false,
-    isManagerLayout: false,
+    isBarberLayout: false
 };
 
 export {StaffListHeader};

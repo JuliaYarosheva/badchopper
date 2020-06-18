@@ -9,7 +9,7 @@ const StaffBarbers = () => {
                 headerLabel="!!!Мастера"
                 isBarberLayout
             />
-            <StaffList barberLayout/>
+            <StaffList isBarberLayout/>
         </>
     );
 };

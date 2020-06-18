@@ -9,8 +9,8 @@ export const editStaff = (data) => {
     return PUT(ENDPOINTS.UPDATE_STAFF, data)
 };
 
-export const deleteStaff = (data) => {
-    return DELETE(ENDPOINTS.DELETE_STAFF, data)
+export const deleteStaff = (id) => {
+    return DELETE(ENDPOINTS.DELETE_STAFF, id)
 };
 
 export const getAllStaff = () => {

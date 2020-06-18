@@ -1,14 +1,17 @@
-export type StaffDTOType = {
+export type StaffItemDTOType = {
     id?: string;
     name: string;
     surname: string;
-    patronymic: string;
     position: string;
     imageId: string;
-    instagramUrl?: string;
-    facebookUrl?: string;
+    instagramUrl: string;
+    facebookUrl: string;
+    description: string;
+    patronymic: string;
 }
 
+export type StaffDTOType = StaffItemDTOType[]
+
 export type StaffResponseType = {
-    ops: StaffDTOType[]
+    ops: StaffItemDTOType[]
 }

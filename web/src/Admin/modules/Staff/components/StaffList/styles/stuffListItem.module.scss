@@ -1,23 +1,23 @@
 @import "../../../../../styles/colors/colors.module";
 
-.assistanceListItem {
+.stuffListItem {
 	padding: 8px 0;
 	border-bottom: 1px solid $disabled;
 	transition: background-color .2s;
 	cursor: pointer;
 }
 
-.assistanceListItem:last-child {
+.stuffListItem:last-child {
 	border-bottom: none;
 }
 
-.assistanceListItem > div {
+.stuffListItem.module > div {
 	padding: 0 4px;
 	display: flex;
 	align-items: center;
 }
 
-.assistanceListItem:hover {
+.stuffListItem:hover {
 	background-color: lighten($disabled, 20%);
 }
 
